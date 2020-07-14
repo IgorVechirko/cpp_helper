@@ -1,8 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <ctime>
 
-#define OUT_FUNC std::cout << __FUNCTION__ << std::endl;
+#define LOGOUT_FUNC std::cout << __FUNCTION__ << std::endl;
+
+
+
 
 namespace fucnctionsAndMethodsPointers
 {
@@ -52,12 +56,12 @@ namespace smartPointers
 				
 			TestClass()
 			{
-				std::cout << __FUNCTION__ << std::endl;
+				LOGOUT_FUNC
 			}
 			
 			virtual ~TestClass()
 			{
-				std::cout << __FUNCTION__ << std::endl;
+				LOGOUT_FUNC
 			}
 
 	};
@@ -68,7 +72,6 @@ namespace smartPointers
 
 		{
 			auto sharedPtr = std::shared_ptr<TestClass>( new TestClass() );
-
 			sparePtr = sharedPtr;
 			std::cout << "finish local block" << std::endl;
 		}
@@ -82,7 +85,6 @@ namespace smartPointers
 
 		{
 			auto uniquePtr = std::unique_ptr<TestClass>( new TestClass() );
-
 			//sparePtr = uniquePtr; can'r create copy;
 			std::cout << "finish local block" << std::endl;
 		}
@@ -101,11 +103,11 @@ namespace smartPointers
 			sHuman( const std::string& name )
 			{
 				this->name = name;
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 			~sHuman()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 		};
 
@@ -117,11 +119,11 @@ namespace smartPointers
 			sGroup( const std::string& name )
 			{
 				this->name = name;
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 			~sGroup()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 		};
 
@@ -132,7 +134,7 @@ namespace smartPointers
 
 			SharedPtrCycleRelation()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 
 				std::vector<std::string> persons = { "person1", "person2", "person3", "person4" };
 				std::vector<std::string> casts = { "casta1", "casta2", "casta3", "casta4" };
@@ -152,7 +154,7 @@ namespace smartPointers
 			}
 			virtual ~SharedPtrCycleRelation()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 	};
 
@@ -167,11 +169,11 @@ namespace smartPointers
 			sHuman( const std::string& name )
 			{
 				this->name = name;
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 			~sHuman()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 		};
 
@@ -183,11 +185,11 @@ namespace smartPointers
 			sGroup( const std::string& name )
 			{
 				this->name = name;
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 			~sGroup()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 		};
 
@@ -198,7 +200,7 @@ namespace smartPointers
 
 			ResolveSharedPtrCycleRelationWithWeakPtr()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 
 				std::vector<std::string> persons = { "person1", "person2", "person3", "person4" };
 				std::vector<std::string> casts = { "casta1", "casta2", "casta3", "casta4" };
@@ -228,7 +230,7 @@ namespace smartPointers
 			}
 			virtual ~ResolveSharedPtrCycleRelationWithWeakPtr()
 			{
-				OUT_FUNC
+				LOGOUT_FUNC
 			}
 	};
 
@@ -248,9 +250,90 @@ namespace smartPointers
 
 };
 
+namespace templates
+{
+	//template< typename TypesPackage >
+	void tempalteFunctionWithTypesPackage()
+	{
+		std::cout << "last function" << std::endl;
+	}
+
+	template< typename T, typename... TypesPackage >
+	void tempalteFunctionWithTypesPackage(const T& firstArg, const TypesPackage&... argsPackage )
+	{
+		std::cout << firstArg << std::endl;
+		tempalteFunctionWithTypesPackage( argsPackage... );
+	}
+
+	void example()
+	{
+		tempalteFunctionWithTypesPackage( "sldkfj", 3, 6.598f, true );
+	}
+	
+
+	//template alias
+	template< typename T>
+	class MyAllocator
+	{
+	};
+
+	template<typename T>
+	using MyVec = std::vector<T,MyAllocator<T>>;
+
+};
+
+namespace lambdas
+{
+	void example()
+	{
+		std::string capturedVal = "captured val";
+		std::string otherVal = "other val";
+
+		auto lambdaWithCapturedByValue = [=,&capturedVal](){
+			LOGOUT_FUNC
+			std::cout << "capturedVal = " << capturedVal << std::endl;
+			std::cout << "other val = " << otherVal << std::endl;
+		};
+
+		auto lambdaWithCapturedByRef = [&,capturedVal](){
+			LOGOUT_FUNC
+			std::cout << "capturedVal = " << capturedVal << std::endl;
+			std::cout << "other val = " << otherVal << std::endl;
+		};
+
+		capturedVal = "new captured val";
+		otherVal = "new other val";
+
+		lambdaWithCapturedByValue();
+		lambdaWithCapturedByRef();
+
+		auto lambdaWithArgsAndReturnType = []( auto argToReturn ) -> auto { return argToReturn; };
+		std::cout << lambdaWithArgsAndReturnType( "lambdaWithArgsAndReturnType" ) << std::endl;
+	}
+};
+
+namespace debugTools
+{
+	void example()
+	{
+		float arr[10000];
+
+		srand(time(nullptr));
+
+		for( int indx = 0; indx < 10000; indx++ )
+		{
+			float logoutValueIfMoreThen0_95 = (float)rand() / (float)RAND_MAX;
+			arr[indx] = logoutValueIfMoreThen0_95;
+		}
+
+		LOGOUT_FUNC
+	}
+};
+
 
 int main()
 {
+	debugTools::example();
 
 	std::cin.get();
 
