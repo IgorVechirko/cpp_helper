@@ -330,10 +330,70 @@ namespace debugTools
 	}
 };
 
+namespace ClassesAndStructures
+{
+
+	struct BaseStruct
+	{
+		std::string baseStructMember = "baseStructMember";
+	};
+
+	struct ChildStruct : BaseStruct // same as public
+	{
+		std::string childStructMember = "childStructMember";
+	};
+	
+	class BaseClass
+	{
+		public:
+		
+			std::string baseClassMember = "baseClassMember";
+	};
+
+	class ChildClass : BaseClass // same as private
+	{
+		public:
+			
+			std::string childClassMember = "childClassMember";
+	};
+
+	class TestClass : ChildStruct // same as private
+					, public ChildClass
+	{
+	};
+
+	struct TestStruct : ChildStruct
+					  , ChildClass
+	{
+	};
+
+	void example()
+	{
+		LOGOUT_FUNC
+		
+		TestClass testClassInstance;
+		
+		//std::cout << testClassInstance.baseStructMember << std::endl;// no access
+		//std::cout << testClassInstance.baseClassMember << std::endl;// no access
+		//std::cout << testClassInstance.childStructMember << std::endl;// no access
+		std::cout << "has access to " << testClassInstance.childClassMember << std::endl;
+		
+		TestStruct testStructInstance;
+		std::cout << "has access to " << testStructInstance.baseStructMember << std::endl;
+		//std::cout << testStructInstance.baseClassMember << std::endl;// no access
+		std::cout << "has access to " << testStructInstance.childStructMember << std::endl;
+		std::cout << "has access to " << testStructInstance.childClassMember << std::endl;
+		
+		
+	}
+
+
+
+}
 
 int main()
 {
-	debugTools::example();
+	ClassesAndStructures::example();
 
 	std::cin.get();
 
