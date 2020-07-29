@@ -520,7 +520,7 @@ namespace FinalKeyWord
 	{
 		public:
 		
-			virtual void virtuaMethod() final
+			virtual void virtuaMethod() final // final can be hint for compiler for optimize
 			{
 				LOGOUT_FUNC
 			}
