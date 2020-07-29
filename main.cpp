@@ -502,10 +502,60 @@ namespace VirtualAndOverride
 	}
 }
 
+namespace FinalKeyWord
+{
+	
+	class BaseClass
+	{
+		public:
+		
+			virtual void virtuaMethod()
+			{
+				LOGOUT_FUNC
+			}
+		
+	};
+
+	class FistChildClass : public BaseClass
+	{
+		public:
+		
+			virtual void virtuaMethod() final
+			{
+				LOGOUT_FUNC
+			}
+	};
+
+	class SecondChildClass final : public FistChildClass
+	{
+		/*virtual void virtuaMethod() final //not available
+		{
+			LOGOUT_FUNC
+		}*/
+	};
+
+	class thirdChildClass //: public SecondChildClass// not available
+	{
+		
+	};
+
+
+	void example()
+	{
+		BaseClass* instance = new SecondChildClass();
+		
+		instance->virtuaMethod();
+		
+		delete instance;
+		
+	};
+
+}
+
 
 int main()
 {
-	VirtualAndOverride::example();
+	FinalKeyWord::example();
 
 	std::cin.get();
 
