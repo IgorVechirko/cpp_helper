@@ -896,32 +896,32 @@ namespace RTTIEmulation
 	template<typename T, typename... Types>
 	T* createCastedObj( const Types&... args )
 	{
-		auto ptrSize = sizeof(const std::vector<int>*);
-		auto charsArray = new char[sizeof(T) + ptrSize];
-
-		auto headerMemory = reinterpret_cast<const std::vector<int>*>(charsArray);
-		auto objMemory = reinterpret_cast<T*>(charsArray+ptrSize);
-
-		headerMemory = &T::getTypesList();
-
-		auto result = new(objMemory) T(args...);
-
+		auto headerSize = sizeof(uintptr_t);
+		auto objSize = sizeof(T);
+		
+		void* headerPtr = new uint8_t[objSize+headerSize];
+		void* objPtr = (char*)headerPtr + headerSize;
+		
+		T* result = new(objPtr) T(args...);
+		
+		std::cout << "createCastedObj headerPtr = " << headerPtr << ", objPtr = " << objPtr << ", result = " << result << std::endl;
+		
 		return result;
 	}
 
 	template< typename T, typename Y>
 	T* my_dynamic_cast(Y* convertPtr )
 	{
-		if( !convertPtr )
+		if ( !convertPtr )
 			return nullptr;
 		
-		auto objClassTypesList = reinterpret_cast<const std::vector<int>*>( reinterpret_cast<char*>(convertPtr) - sizeof(const std::vector<int>*) );
+		auto headerPtr = reinterpret_cast<const std::vector<int>**>( (uintptr_t)convertPtr - 8 );
 		
-		auto findIt = std::find( objClassTypesList->begin(), objClassTypesList->end(), T::getTypeID() );
-		if ( findIt != objClassTypesList->end() )
-		{
-			return reinterpret_cast<T*>(convertPtr);
-		}
+		std::cout << " convertPtr = " << convertPtr << ", headerPtr = " << headerPtr << std::endl;
+		
+		//auto vec = (*(*headerPtr));
+		
+		bool stop = true;
 
 		return nullptr;
 	};
@@ -930,8 +930,9 @@ namespace RTTIEmulation
 	{
 		LOGOUT_FUNC
 
-		auto firstTreeChildInstance = static_cast<FirstTreeChild*>( createCastedObj<TreesCombine>() );
-
+		auto firstTreeChildInstance = new TreesCombine(); //createCastedObj<TreesCombine>();
+		auto castedPtr = static_cast<FirstTreeSecondaryChild*>(firstTreeChildInstance);
+		std::cout << "firstTreeChildInstance = " << (void*)firstTreeChildInstance << ", castedPtr = " << (void*)castedPtr << std::endl;
 		auto secondTreeChildInstance = my_dynamic_cast<SecondTreeChild>(firstTreeChildInstance);
 
 		if ( secondTreeChildInstance )
@@ -1071,7 +1072,7 @@ namespace RvalueLvalueSemantic
 
 int main()
 {
-	RvalueLvalueSemantic::example();
+	RTTIEmulation::example();
 
 	std::cin.get();
 
