@@ -15,12 +15,13 @@
 #include "StaticLibUsing.h"
 #include "DynamicLibUsing.h"
 #include "ExplicitKeyWord.h"
+#include "MutableKeyWord.h"
 
 
 
 int main()
 {
-	ExplicitKeyWord::example();
+	MutableKeyWord::example();
 
 
 	std::cin.get();
