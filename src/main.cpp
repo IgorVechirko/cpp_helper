@@ -14,12 +14,13 @@
 #include "InlineFunctions.h"
 #include "StaticLibUsing.h"
 #include "DynamicLibUsing.h"
+#include "ExplicitKeyWord.h"
 
 
 
 int main()
 {
-	DynamicLibUsing::example();
+	ExplicitKeyWord::example();
 
 
 	std::cin.get();
