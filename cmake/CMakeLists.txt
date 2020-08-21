@@ -11,7 +11,7 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/CommonInclude.h
                     ${CPP_HELPER_SRC_DIR}/DebugTools.h
                     ${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
-                    ${CPP_HELPER_SRC_DIR}/FunctionsAndMethodsPointers.h
+                    ${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
                     ${CPP_HELPER_SRC_DIR}/InlineFunctions.h
                     ${CPP_HELPER_SRC_DIR}/Lambdas.h
                     ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
