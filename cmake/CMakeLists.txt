@@ -5,6 +5,16 @@ project( cpp_helper VERSION 0.1.0.0 LANGUAGES CXX )
 set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
+#static lib
+set( STATIC_LIB_SRC ${CPP_HELPER_SRC_DIR}/StaticLib.cpp
+					${CPP_HELPER_SRC_DIR}/StaticLib.h
+					)
+
+add_library( static_lib STATIC ${STATIC_LIB_SRC} )
+
+target_include_directories( static_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
+
 #sources
 set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
@@ -20,8 +30,10 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/SmartPointers.h
                     ${CPP_HELPER_SRC_DIR}/Templates.h
                     ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
+					${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
                     )
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
 include_directories( ${CPP_HELPER_SRC_DIR} )
+target_link_libraries( cpp_helper static_lib )

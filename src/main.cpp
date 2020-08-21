@@ -12,12 +12,13 @@
 #include "RTTIEmulation.h"
 #include "RvalueLvalueSemantic.h"
 #include "InlineFunctions.h"
+#include "StaticLibUsing.h"
 
 
 
 int main()
 {
-	InlineFunctions::example();
+	StaticLibUsing::example();
 
 
 	std::cin.get();
