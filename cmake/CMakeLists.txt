@@ -45,6 +45,7 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
 					${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
 					${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
 					${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
+					${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
                     )
 
 
