@@ -27,6 +27,33 @@ target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
 target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
 
 #sources
+
+source_group( examples\\extern_key_word FILES ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
+											  ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
+											  ${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
+											  )
+
+source_group( examples FILES ${CPP_HELPER_SRC_DIR}/main.cpp
+							 ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
+							 ${CPP_HELPER_SRC_DIR}/CommonInclude.h
+							 ${CPP_HELPER_SRC_DIR}/DebugTools.h
+						 	 ${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
+						 	 ${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
+						 	 ${CPP_HELPER_SRC_DIR}/InlineFunctions.h
+						 	 ${CPP_HELPER_SRC_DIR}/Lambdas.h
+						 	 ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
+						 	 ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
+						 	 ${CPP_HELPER_SRC_DIR}/RvalueLvalueSemantic.h
+							 ${CPP_HELPER_SRC_DIR}/SmartPointers.h
+							 ${CPP_HELPER_SRC_DIR}/Templates.h
+							 ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
+							 ${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
+							 ${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
+							 ${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
+							 ${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
+							 ${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
+							 )
+ 
 set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
                     ${CPP_HELPER_SRC_DIR}/CommonInclude.h
@@ -46,6 +73,9 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
 					${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
 					${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
 					${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
+					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
+					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
+					${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
                     )
 
 

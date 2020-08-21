@@ -17,12 +17,13 @@
 #include "ExplicitKeyWord.h"
 #include "MutableKeyWord.h"
 #include "ValotileRegisterKeyWords.h"
+#include "ExternKeyWord.h"
 
 
 
 int main()
 {
-	MutableKeyWord::example();
+	ExternKeyWord::example();
 
 
 	std::cin.get();
