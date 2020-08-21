@@ -15,6 +15,17 @@ add_library( static_lib STATIC ${STATIC_LIB_SRC} )
 target_include_directories( static_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
 target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
 
+#dynamic lib
+set( DYNAMIC_LIB_SRC ${CPP_HELPER_SRC_DIR}/DynamicLib.cpp
+					 ${CPP_HELPER_SRC_DIR}/DynamicLib.h
+					 )
+
+add_library( dynamic_lib SHARED ${DYNAMIC_LIB_SRC} )
+
+target_include_directories( dynamic_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
+target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
+
 #sources
 set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
@@ -31,9 +42,10 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
                     ${CPP_HELPER_SRC_DIR}/Templates.h
                     ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
 					${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
+					${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
                     )
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
 include_directories( ${CPP_HELPER_SRC_DIR} )
-target_link_libraries( cpp_helper static_lib )
+target_link_libraries( cpp_helper static_lib dynamic_lib )

@@ -13,12 +13,13 @@
 #include "RvalueLvalueSemantic.h"
 #include "InlineFunctions.h"
 #include "StaticLibUsing.h"
+#include "DynamicLibUsing.h"
 
 
 
 int main()
 {
-	StaticLibUsing::example();
+	DynamicLibUsing::example();
 
 
 	std::cin.get();
