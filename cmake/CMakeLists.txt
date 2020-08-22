@@ -52,6 +52,8 @@ source_group( examples FILES ${CPP_HELPER_SRC_DIR}/main.cpp
 							 ${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
 							 ${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
 							 ${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
+							 ${CPP_HELPER_SRC_DIR}/MultiThread.h
+							 ${CPP_HELPER_SRC_DIR}/NumericLimits.h
 							 )
  
 set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
@@ -76,6 +78,8 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
+					${CPP_HELPER_SRC_DIR}/MultiThread.h
+					${CPP_HELPER_SRC_DIR}/NumericLimits.h
                     )
 
 

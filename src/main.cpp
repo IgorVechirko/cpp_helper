@@ -18,12 +18,12 @@
 #include "MutableKeyWord.h"
 #include "ValotileRegisterKeyWords.h"
 #include "ExternKeyWord.h"
-
+#include "NumericLimits.h"
 
 
 int main()
 {
-	ExternKeyWord::example();
+	NumericLimits::example();
 
 
 	std::cin.get();
