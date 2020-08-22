@@ -20,11 +20,12 @@
 #include "ExternKeyWord.h"
 #include "NumericLimits.h"
 #include "MinMaxFuncs.h"
+#include "Ratio.h"
 
 
 int main()
 {
-	MinMaxFuncs::example();
+	Ratio::example();
 
 
 	std::cin.get();
