@@ -19,11 +19,12 @@
 #include "ValotileRegisterKeyWords.h"
 #include "ExternKeyWord.h"
 #include "NumericLimits.h"
+#include "MinMaxFuncs.h"
 
 
 int main()
 {
-	NumericLimits::example();
+	MinMaxFuncs::example();
 
 
 	std::cin.get();
