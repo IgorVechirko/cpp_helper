@@ -21,11 +21,12 @@
 #include "NumericLimits.h"
 #include "MinMaxFuncs.h"
 #include "Ratio.h"
+#include "Chrono.h"
 
 
 int main()
 {
-	Ratio::example();
+	Chrono::example();
 
 
 	std::cin.get();
