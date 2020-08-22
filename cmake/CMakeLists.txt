@@ -57,6 +57,7 @@ source_group( examples FILES ${CPP_HELPER_SRC_DIR}/main.cpp
 							 ${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
 							 ${CPP_HELPER_SRC_DIR}/Ratio.h
 							 ${CPP_HELPER_SRC_DIR}/Chrono.h
+							 ${CPP_HELPER_SRC_DIR}/Random.h
 							 )
  
 set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
@@ -86,6 +87,7 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
 					${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
 					${CPP_HELPER_SRC_DIR}/Ratio.h
 					${CPP_HELPER_SRC_DIR}/Chrono.h
+					${CPP_HELPER_SRC_DIR}/Random.h
                     )
 
 

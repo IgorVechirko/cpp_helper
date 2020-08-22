@@ -15,7 +15,6 @@ namespace Ratio
 			std::cout << "customNano equal to std::nano" << std::endl;
 		}
 
-		std::ratio<60,1> min;
 		auto result = std::ratio_add<std::ratio<60,1>,std::ratio<120,1>>();
 		std::cout << "result.num = " << result.num << std::endl;
 

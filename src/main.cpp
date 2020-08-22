@@ -22,11 +22,12 @@
 #include "MinMaxFuncs.h"
 #include "Ratio.h"
 #include "Chrono.h"
+#include "Random.h"
 
 
 int main()
 {
-	Chrono::example();
+	Random::example();
 
 
 	std::cin.get();
