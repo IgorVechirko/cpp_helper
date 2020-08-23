@@ -2,6 +2,9 @@ CMAKE_MINIMUM_REQUIRED( VERSION 3.8 )
 
 project( cpp_helper VERSION 0.1.0.0 LANGUAGES CXX )
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
@@ -52,7 +55,7 @@ source_group( examples FILES ${CPP_HELPER_SRC_DIR}/main.cpp
 							 ${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
 							 ${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
 							 ${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
-							 ${CPP_HELPER_SRC_DIR}/MultiThread.h
+							 ${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
 							 ${CPP_HELPER_SRC_DIR}/NumericLimits.h
 							 ${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
 							 ${CPP_HELPER_SRC_DIR}/Ratio.h
@@ -82,7 +85,7 @@ set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
 					${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
-					${CPP_HELPER_SRC_DIR}/MultiThread.h
+					${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
 					${CPP_HELPER_SRC_DIR}/NumericLimits.h
 					${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
 					${CPP_HELPER_SRC_DIR}/Ratio.h

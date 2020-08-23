@@ -23,11 +23,12 @@
 #include "Ratio.h"
 #include "Chrono.h"
 #include "Random.h"
+#include "ParallelProgramming.h"
 
 
 int main()
 {
-	Random::example();
+	ParallelProgramming::conditionVariableExample();
 
 
 	std::cin.get();
