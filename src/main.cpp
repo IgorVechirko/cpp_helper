@@ -24,12 +24,13 @@
 #include "Chrono.h"
 #include "Random.h"
 #include "ParallelProgramming.h"
-
+#include "Containers.h"
+#include "Iterators.h"
+#include "Algorithms.h"
 
 int main()
 {
-	ParallelProgramming::conditionVariableExample();
-
+	Algorithms::example();
 
 	std::cin.get();
 

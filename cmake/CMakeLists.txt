@@ -36,62 +36,73 @@ source_group( examples\\extern_key_word FILES ${CPP_HELPER_SRC_DIR}/ExternKeyWor
 											  ${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
 											  )
 
-source_group( examples FILES ${CPP_HELPER_SRC_DIR}/main.cpp
-							 ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
-							 ${CPP_HELPER_SRC_DIR}/CommonInclude.h
-							 ${CPP_HELPER_SRC_DIR}/DebugTools.h
-						 	 ${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
-						 	 ${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
-						 	 ${CPP_HELPER_SRC_DIR}/InlineFunctions.h
-						 	 ${CPP_HELPER_SRC_DIR}/Lambdas.h
-						 	 ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
-						 	 ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
-						 	 ${CPP_HELPER_SRC_DIR}/RvalueLvalueSemantic.h
-							 ${CPP_HELPER_SRC_DIR}/SmartPointers.h
-							 ${CPP_HELPER_SRC_DIR}/Templates.h
-							 ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
-							 ${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
-							 ${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
-							 ${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
-							 ${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
-							 ${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
-							 ${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
-							 ${CPP_HELPER_SRC_DIR}/NumericLimits.h
-							 ${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
-							 ${CPP_HELPER_SRC_DIR}/Ratio.h
-							 ${CPP_HELPER_SRC_DIR}/Chrono.h
-							 ${CPP_HELPER_SRC_DIR}/Random.h
-							 )
+source_group( examples\\main_stl FILES 
+				${CPP_HELPER_SRC_DIR}/Containers.h
+				${CPP_HELPER_SRC_DIR}/Iterators.h
+				${CPP_HELPER_SRC_DIR}/Algorithms.h
+				)
+
+source_group( examples FILES 
+			${CPP_HELPER_SRC_DIR}/main.cpp
+			${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
+			${CPP_HELPER_SRC_DIR}/CommonInclude.h
+			${CPP_HELPER_SRC_DIR}/DebugTools.h
+			${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
+			${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
+			${CPP_HELPER_SRC_DIR}/InlineFunctions.h
+			${CPP_HELPER_SRC_DIR}/Lambdas.h
+			${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
+			${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
+			${CPP_HELPER_SRC_DIR}/RvalueLvalueSemantic.h
+			${CPP_HELPER_SRC_DIR}/SmartPointers.h
+			${CPP_HELPER_SRC_DIR}/Templates.h
+			${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
+			${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
+			${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
+			${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
+			${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
+			${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
+			${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
+			${CPP_HELPER_SRC_DIR}/NumericLimits.h
+			${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
+			${CPP_HELPER_SRC_DIR}/Ratio.h
+			${CPP_HELPER_SRC_DIR}/Chrono.h
+			${CPP_HELPER_SRC_DIR}/Random.h
+			)
  
-set( CPP_HELPER_SRC ${CPP_HELPER_SRC_DIR}/main.cpp
-                    ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
-                    ${CPP_HELPER_SRC_DIR}/CommonInclude.h
-                    ${CPP_HELPER_SRC_DIR}/DebugTools.h
-                    ${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
-                    ${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
-                    ${CPP_HELPER_SRC_DIR}/InlineFunctions.h
-                    ${CPP_HELPER_SRC_DIR}/Lambdas.h
-                    ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
-                    ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
-                    ${CPP_HELPER_SRC_DIR}/RvalueLvalueSemantic.h
-                    ${CPP_HELPER_SRC_DIR}/SmartPointers.h
-                    ${CPP_HELPER_SRC_DIR}/Templates.h
-                    ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
-					${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
-					${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
-					${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
-					${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
-					${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
-					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
-					${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
-					${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
-					${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
-					${CPP_HELPER_SRC_DIR}/NumericLimits.h
-					${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
-					${CPP_HELPER_SRC_DIR}/Ratio.h
-					${CPP_HELPER_SRC_DIR}/Chrono.h
-					${CPP_HELPER_SRC_DIR}/Random.h
-                    )
+set( CPP_HELPER_SRC 
+	${CPP_HELPER_SRC_DIR}/main.cpp
+    ${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
+    ${CPP_HELPER_SRC_DIR}/CommonInclude.h
+    ${CPP_HELPER_SRC_DIR}/DebugTools.h
+    ${CPP_HELPER_SRC_DIR}/FinalKeyWord.h
+    ${CPP_HELPER_SRC_DIR}/FucnctionsAndMethodsPointers.h
+    ${CPP_HELPER_SRC_DIR}/InlineFunctions.h
+    ${CPP_HELPER_SRC_DIR}/Lambdas.h
+    ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
+    ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
+    ${CPP_HELPER_SRC_DIR}/RvalueLvalueSemantic.h
+    ${CPP_HELPER_SRC_DIR}/SmartPointers.h
+    ${CPP_HELPER_SRC_DIR}/Templates.h
+    ${CPP_HELPER_SRC_DIR}/VirtualAndOverrideKeyWords.h
+	${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
+	${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
+	${CPP_HELPER_SRC_DIR}/ExplicitKeyWord.h
+	${CPP_HELPER_SRC_DIR}/MutableKeyWord.h
+	${CPP_HELPER_SRC_DIR}/ValotileRegisterKeyWords.h
+	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
+	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
+	${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
+	${CPP_HELPER_SRC_DIR}/ParallelProgramming.h
+	${CPP_HELPER_SRC_DIR}/NumericLimits.h
+	${CPP_HELPER_SRC_DIR}/MinMaxFuncs.h
+	${CPP_HELPER_SRC_DIR}/Ratio.h
+	${CPP_HELPER_SRC_DIR}/Chrono.h
+	${CPP_HELPER_SRC_DIR}/Random.h
+	${CPP_HELPER_SRC_DIR}/Containers.h
+	${CPP_HELPER_SRC_DIR}/Iterators.h
+	${CPP_HELPER_SRC_DIR}/Algorithms.h
+    )
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
