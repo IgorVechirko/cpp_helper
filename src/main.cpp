@@ -30,7 +30,7 @@
 
 int main()
 {
-	ExternKeyWord::example();
+	ClassesAndStructures::example();
 
 	std::cin.get();
 

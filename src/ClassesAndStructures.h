@@ -2,6 +2,7 @@
 #define ClassesAndStructures_H
 
 #include "CommonInclude.h"
+#include <string>
 
 namespace ClassesAndStructures
 {
@@ -28,15 +29,25 @@ namespace ClassesAndStructures
 	
 	class BaseClass
 	{
+		static std::string _staticMember;//static member declaration. Static member must be defined out of class scope
+
 		public:
 		
 			std::string baseClassMember = "baseClassMember";
 		
+			BaseClass()
+			{
+				std::cout << "_staticMember = " << _staticMember << std::endl;
+			}
+
 			virtual void classVirtualMethod()
 			{
 				std::cout << "classVirtualMethod member = " << baseClassMember << std::endl;
 			}
 	};
+
+	std::string BaseClass::_staticMember = "THIS IS STATIC MEMBER";
+
 
 	class ChildClass : BaseClass // same as private
 	{
