@@ -30,7 +30,7 @@
 
 int main()
 {
-	Algorithms::example();
+	Templates::example();
 
 	std::cin.get();
 

@@ -20,10 +20,83 @@ namespace Templates
 		tempalteFunctionWithTypesPackage( argsPackage... );
 	}
 
+	class BaseClass
+	{
+		bool _isInited{false};
+		std::string _className = "BaseClass";
+
+
+	protected:
+
+		void setupClassName( const std::string& className )
+		{
+			_className = className;
+		}
+
+	public:
+
+		void init()
+		{
+			_isInited = true;
+		}
+
+		void startUse()
+		{
+			if(_isInited)
+			{
+				std::cout << _className << " instance start used" << std::endl;
+			}
+		}
+
+	};
+
+	class ChildClass : public BaseClass
+	{
+		public:
+
+			void ininWithClassName( const std::string& className )
+			{
+				setupClassName( "ChildClass" );
+			}
+	};
+
+
+	template< typename ObjType, typename InitializerType, typename... InitArgsTypes >
+	ObjType* createWithInitializer( InitializerType initializerPtr, const InitArgsTypes... initArgs )
+	{
+		ObjType* ret = new(std::nothrow) ObjType();
+		
+		if ( ret )
+		{
+			ret->init();
+
+			if( initializerPtr )
+			{
+				(ret->*initializerPtr)( initArgs...);
+			}
+		}
+		else
+		{
+			delete ret;
+			ret = nullptr;
+		}
+
+		return ret;
+	}
+
+
 	void example()
 	{
 		tempalteFunctionWithTypesPackage( "", 5, 0.054f, true );
 		tempalteFunctionWithTypesPackage( 5, 0.054, true );
+
+		auto customCreatedObj = new ChildClass();
+		customCreatedObj->ininWithClassName( "ChildClass" );
+
+		auto templateFuncCreatedObj = createWithInitializer<ChildClass>(&ChildClass::ininWithClassName, "ChildClass" );
+
+		customCreatedObj->startUse();
+		templateFuncCreatedObj->startUse();
 	}
 	
 
