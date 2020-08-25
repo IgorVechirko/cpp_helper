@@ -30,7 +30,7 @@
 
 int main()
 {
-	Templates::example();
+	ExternKeyWord::example();
 
 	std::cin.get();
 

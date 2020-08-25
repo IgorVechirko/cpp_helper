@@ -6,14 +6,15 @@
 
 extern void useGlobalValueFunc1();
 extern void useGlobalValueFunc2();
-extern int globalValue;
+extern int globalValueForAllTranslationUnits;
 
 namespace ExternKeyWord
 {
 
 	void example()
 	{
-		std::cout << "globalValue start val -> " << globalValue << std::endl;
+		//globalValueForCurrenTranslationUnit++; //error
+		std::cout << "globalValue start val -> " << globalValueForAllTranslationUnits << std::endl;
 		useGlobalValueFunc1();
 		useGlobalValueFunc2();
 	}

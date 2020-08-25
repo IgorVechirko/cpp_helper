@@ -1,9 +1,9 @@
 #include <iostream>
 
-int globalValue = 1;
+int globalValueForAllTranslationUnits = 1;
 
 void useGlobalValueFunc1()
 {
-	globalValue++;
-	std::cout << __FUNCTION__ << " globalValue = " << globalValue << std::endl;
+	globalValueForAllTranslationUnits++;
+	std::cout << __FUNCTION__ << " globalValueForAllTranslationUnits = " << globalValueForAllTranslationUnits << std::endl;
 }
