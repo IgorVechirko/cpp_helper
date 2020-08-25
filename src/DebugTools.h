@@ -2,20 +2,23 @@
 #define DebugTools_H
 
 #include "CommonInclude.h"
-#include <ctime>
+#include <random>
 
 namespace DebugTools
 {
 	void example()
 	{
-		float arr[10000];
+		std::default_random_engine dre;
+		std::uniform_real_distribution<float> df(0.0f, 1.01f);
 
-		srand(time(nullptr));
+		float arr[10000];
 
 		for( int indx = 0; indx < 10000; indx++ )
 		{
-			float logoutValueIfMoreThen0_95 = (float)rand() / (float)RAND_MAX;
+			float logoutValueIfMoreThen0_95 = df(dre);
 			arr[indx] = logoutValueIfMoreThen0_95;
+
+			bool hitBraeakPointIfIndxEqual40 = true;
 		}
 
 		LOGOUT_FUNC

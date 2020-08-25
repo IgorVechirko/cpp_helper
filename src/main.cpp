@@ -30,7 +30,7 @@
 
 int main()
 {
-	ClassesAndStructures::example();
+	DebugTools::example();
 
 	std::cin.get();
 
