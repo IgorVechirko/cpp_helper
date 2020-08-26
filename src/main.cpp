@@ -27,10 +27,11 @@
 #include "Containers.h"
 #include "Iterators.h"
 #include "Algorithms.h"
+#include "OperatorsOverrides.h"
 
 int main()
 {
-	DebugTools::example();
+	OperatorsOverrides::example();
 
 	std::cin.get();
 

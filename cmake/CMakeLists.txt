@@ -42,8 +42,9 @@ source_group( examples\\main_stl FILES
 				${CPP_HELPER_SRC_DIR}/Algorithms.h
 				)
 
+source_group( main FILES ${CPP_HELPER_SRC_DIR}/main.cpp )
+
 source_group( examples FILES 
-			${CPP_HELPER_SRC_DIR}/main.cpp
 			${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
 			${CPP_HELPER_SRC_DIR}/CommonInclude.h
 			${CPP_HELPER_SRC_DIR}/DebugTools.h
@@ -68,6 +69,7 @@ source_group( examples FILES
 			${CPP_HELPER_SRC_DIR}/Ratio.h
 			${CPP_HELPER_SRC_DIR}/Chrono.h
 			${CPP_HELPER_SRC_DIR}/Random.h
+			${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
 			)
  
 set( CPP_HELPER_SRC 
@@ -102,6 +104,7 @@ set( CPP_HELPER_SRC
 	${CPP_HELPER_SRC_DIR}/Containers.h
 	${CPP_HELPER_SRC_DIR}/Iterators.h
 	${CPP_HELPER_SRC_DIR}/Algorithms.h
+	${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
     )
 
 
