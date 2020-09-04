@@ -111,3 +111,10 @@ set( CPP_HELPER_SRC
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
 include_directories( ${CPP_HELPER_SRC_DIR} )
 target_link_libraries( cpp_helper static_lib dynamic_lib )
+
+
+find_library( PTHREAD_LIB pthread )
+
+#if ( PTHREAD_LIB_FOUND )
+	target_link_libraries( cpp_helper static_lib pthread )
+#endif()

@@ -28,7 +28,7 @@ namespace MutableKeyWord
 
 		float getSquare() const 
 		{
-			if ( abs(_cachedSquare) <= FLT_EPSILON )
+			if ( abs(_cachedSquare) <= std::numeric_limits<float>::epsilon() )
 			{
 				_cachedSquare = squareCalculation( _vertices );//change mutable variable in const method
 			}

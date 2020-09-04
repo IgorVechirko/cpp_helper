@@ -49,7 +49,7 @@ namespace ExplicitKeyWord
 
 	void example()
 	{
-		TestClass a = "Instance1";
+		TestClass a = std::string( "Instance1" );
 		TestClass b = 2;
 		//TestClass c = { "Instance3", 3 }; implicit conversation disabled
 		TestClass c = TestClass( "Instance3", 3 );

@@ -10,7 +10,7 @@
 #endif
 
 #else
-	define DYNAMIC_LIB_API
+	#define DYNAMIC_LIB_API
 #endif
 
 

@@ -7,6 +7,9 @@
 #include <string>
 #include <ctime>
 #include <iterator>
+#include <memory>
+#include <limits>
+#include <functional>
 
 #define LOGOUT_FUNC std::cout << __FUNCTION__ << std::endl;
 
