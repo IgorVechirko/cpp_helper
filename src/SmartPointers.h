@@ -190,6 +190,51 @@ namespace SmartPointers
 			}
 	};
 
+	class UniquePtrTest
+	{
+		int someMember = 0;
+
+	public:
+
+		UniquePtrTest()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~UniquePtrTest()
+		{
+			LOGOUT_FUNC
+		}
+
+	};
+
+	class Allocator
+	{
+
+	public:
+
+		void* allocate( size_t size )
+		{
+			LOGOUT_FUNC
+
+			return new char[size];
+		}
+		void deallocate( void* ptr ) const
+		{
+			LOGOUT_FUNC
+
+			delete[] ptr;
+		}
+
+		template< typename T>
+		void operator() (T* ptr) const
+		{
+			LOGOUT_FUNC
+			ptr->~UniquePtrTest();
+			deallocate( ptr );
+		}
+
+	};
+
 
 	void example()
 	{
@@ -201,6 +246,15 @@ namespace SmartPointers
 
 		{
 			ResolveSharedPtrCycleRelationWithWeakPtr resolveSharedPtrCycleRelationWithWeakPtr;
+		}
+
+		std::cout << std::endl << std::endl;
+
+		{
+			Allocator allocator;
+			auto testInstance = new( allocator.allocate(sizeof(UniquePtrTest)) ) UniquePtrTest();
+			auto uniquePtr = std::unique_ptr<UniquePtrTest, Allocator>(testInstance);
+
 		}
 	}
 
