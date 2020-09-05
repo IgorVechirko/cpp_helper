@@ -80,27 +80,170 @@ namespace ClassesAndStructures
 		
 	};
 
+	class ChildeClass1 : virtual public BaseClass
+	{
+	public:
+
+		ChildeClass1()
+		{
+		}
+
+		virtual ~ChildeClass1()
+		{
+		};
+	};
+
+	class ChildeClass2 : virtual public BaseClass
+	{
+	public:
+
+		ChildeClass2()
+		{
+		}
+
+		virtual ~ChildeClass2()
+		{
+		};
+	};
+
+	class MultipleInheritanceClass : public ChildeClass1 , public ChildeClass2
+	{
+	public:
+
+		MultipleInheritanceClass()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~MultipleInheritanceClass()
+		{
+			LOGOUT_FUNC
+		}
+
+	};
+
+
+	class ConstructionFirstBaseClass
+	{
+	public:
+
+		ConstructionFirstBaseClass()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~ConstructionFirstBaseClass()
+		{
+			LOGOUT_FUNC
+		}
+	};
+
+	class ConstructionSecondBaseClass
+	{
+
+	public:
+
+		ConstructionSecondBaseClass()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~ConstructionSecondBaseClass()
+		{
+			LOGOUT_FUNC
+		}
+
+	};
+
+	class ConstructionMember1
+	{
+
+	public:
+
+		ConstructionMember1()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~ConstructionMember1()
+		{
+			LOGOUT_FUNC
+		}
+	};
+
+	class ConstructionMember2
+	{
+
+	public:
+
+		ConstructionMember2()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~ConstructionMember2()
+		{
+			LOGOUT_FUNC
+		}
+	};
+
+	class ConstructClass 
+		: public ConstructionFirstBaseClass
+		, public ConstructionSecondBaseClass
+	{
+
+		ConstructionMember1 member1;
+		ConstructionMember2 member2;
+
+		
+	public:
+
+		ConstructClass()
+			: ConstructionSecondBaseClass()
+			, ConstructionFirstBaseClass()
+			, member2()
+			, member1()
+		{
+			LOGOUT_FUNC
+		}
+		virtual ~ConstructClass()
+		{
+			LOGOUT_FUNC
+		}
+	};
+
+
 
 	void example()
 	{
 		LOGOUT_FUNC
+		{
+			TestClass testClassInstance;
 		
-		TestClass testClassInstance;
+			//std::cout << testClassInstance.baseStructMember << std::endl;// no access
+			//std::cout << testClassInstance.baseClassMember << std::endl;// no access
+			//std::cout << testClassInstance.childStructMember << std::endl;// no access
+			std::cout << "has access to " << testClassInstance.childClassMember << std::endl;
+			//testClassInstance.structVirtualMethod(); / no access
+			testClassInstance.classVirtualMethod();
 		
-		//std::cout << testClassInstance.baseStructMember << std::endl;// no access
-		//std::cout << testClassInstance.baseClassMember << std::endl;// no access
-		//std::cout << testClassInstance.childStructMember << std::endl;// no access
-		std::cout << "has access to " << testClassInstance.childClassMember << std::endl;
-		//testClassInstance.structVirtualMethod(); / no access
-		testClassInstance.classVirtualMethod();
-		
-		TestStruct testStructInstance;
-		std::cout << "has access to " << testStructInstance.baseStructMember << std::endl;
-		//std::cout << testStructInstance.baseClassMember << std::endl;// no access
-		std::cout << "has access to " << testStructInstance.childStructMember << std::endl;
-		std::cout << "has access to " << testStructInstance.childClassMember << std::endl;
-		testStructInstance.structVirtualMethod();
-		testStructInstance.classVirtualMethod();
+			TestStruct testStructInstance;
+			std::cout << "has access to " << testStructInstance.baseStructMember << std::endl;
+			//std::cout << testStructInstance.baseClassMember << std::endl;// no access
+			std::cout << "has access to " << testStructInstance.childStructMember << std::endl;
+			std::cout << "has access to " << testStructInstance.childClassMember << std::endl;
+			testStructInstance.structVirtualMethod();
+			testStructInstance.classVirtualMethod();
+		}
+
+		std::cout << std::endl;
+
+		{
+			MultipleInheritanceClass instance;
+			instance.classVirtualMethod();//multiple inheritance solved throw using virtual inheritance
+
+		}
+
+		std::cout << std::endl;
+
+		{
+			ConstructClass instance;
+		}
 		
 		
 	}

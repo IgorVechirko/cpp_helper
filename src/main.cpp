@@ -31,7 +31,7 @@
 
 int main()
 {
-	OperatorsOverrides::example();
+	ClassesAndStructures::example();
 
 	std::cin.get();
 
