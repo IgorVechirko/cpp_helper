@@ -253,7 +253,7 @@ namespace SmartPointers
 		{
 			Allocator allocator;
 			auto testInstance = new( allocator.allocate(sizeof(UniquePtrTest)) ) UniquePtrTest();
-			auto uniquePtr = std::unique_ptr<UniquePtrTest, Allocator>(testInstance);
+			auto uniquePtr = std::unique_ptr<UniquePtrTest,Allocator&>(testInstance, allocator );
 
 		}
 	}
