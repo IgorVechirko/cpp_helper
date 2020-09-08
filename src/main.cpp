@@ -28,10 +28,12 @@
 #include "Iterators.h"
 #include "Algorithms.h"
 #include "OperatorsOverrides.h"
+#include "Attributes.h"
+
 
 int main()
 {
-	ClassesAndStructures::example();
+	Attributes::example();
 
 	std::cin.get();
 

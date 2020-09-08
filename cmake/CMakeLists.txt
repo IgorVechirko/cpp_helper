@@ -70,6 +70,7 @@ source_group( examples FILES
 			${CPP_HELPER_SRC_DIR}/Chrono.h
 			${CPP_HELPER_SRC_DIR}/Random.h
 			${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
+			${CPP_HELPER_SRC_DIR}/Attributes.h
 			)
  
 set( CPP_HELPER_SRC 
@@ -105,6 +106,7 @@ set( CPP_HELPER_SRC
 	${CPP_HELPER_SRC_DIR}/Iterators.h
 	${CPP_HELPER_SRC_DIR}/Algorithms.h
 	${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
+	${CPP_HELPER_SRC_DIR}/Attributes.h
     )
 
 
