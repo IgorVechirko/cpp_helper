@@ -115,6 +115,6 @@ target_link_libraries( cpp_helper static_lib dynamic_lib )
 
 find_library( PTHREAD_LIB pthread )
 
-if ( PTHREAD_LIB_FOUND )
+if ( PTHREAD_LIB )
 	target_link_libraries( cpp_helper static_lib pthread )
 endif()
