@@ -44,6 +44,12 @@ source_group( examples\\main_stl FILES
 
 source_group( main FILES ${CPP_HELPER_SRC_DIR}/main.cpp )
 
+source_group( namespaces FILES 
+								${CPP_HELPER_SRC_DIR}/Namespaces.h
+								${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
+								${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
+)
+
 source_group( examples FILES 
 			${CPP_HELPER_SRC_DIR}/ClassesAndStructures.h
 			${CPP_HELPER_SRC_DIR}/CommonInclude.h
@@ -107,6 +113,9 @@ set( CPP_HELPER_SRC
 	${CPP_HELPER_SRC_DIR}/Algorithms.h
 	${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
 	${CPP_HELPER_SRC_DIR}/Attributes.h
+	${CPP_HELPER_SRC_DIR}/Namespaces.h
+	${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
+	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
     )
 
 

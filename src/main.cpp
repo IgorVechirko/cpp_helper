@@ -29,11 +29,12 @@
 #include "Algorithms.h"
 #include "OperatorsOverrides.h"
 #include "Attributes.h"
+#include "Namespaces.h"
 
 
 int main()
 {
-	Attributes::example();
+	Namespaces::example();
 
 	std::cin.get();
 
