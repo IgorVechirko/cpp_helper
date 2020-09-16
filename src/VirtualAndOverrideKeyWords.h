@@ -9,6 +9,18 @@ namespace VirtualAndOverrideKeyWords
 	class BaseClass
 	{
 		public:
+
+
+			BaseClass()
+			{
+				virtualForConstructor();
+			}
+
+			virtual void virtualForConstructor()
+			{
+				LOGOUT_FUNC
+			}
+
 		
 			void noVirualMethod()
 			{
@@ -29,6 +41,16 @@ namespace VirtualAndOverrideKeyWords
 	class FirstChild : public BaseClass
 	{
 		public:
+
+			FirstChild()
+			{
+				virtualForConstructor();
+			}
+
+			virtual void virtualForConstructor() override
+			{
+				LOGOUT_FUNC
+			}
 		
 			void noVirualMethod()
 			{
@@ -49,6 +71,16 @@ namespace VirtualAndOverrideKeyWords
 	class SecondChild : public FirstChild
 	{
 		public:
+
+			SecondChild()
+			{
+				virtualForConstructor();
+			}
+
+			virtual void virtualForConstructor() override
+			{
+				LOGOUT_FUNC
+			}
 		
 			void noVirualMethod()
 			{
