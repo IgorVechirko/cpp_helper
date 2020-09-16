@@ -33,13 +33,27 @@ namespace FucnctionsAndMethodsPointers
 
 	void example()
 	{
-		returnType(*functionPtr)(int,float,const returnType&) = &function;
-		functionPtr( 5, 0.2f, returnType() );
+		{
+			returnType(*functionPtr)(int,float,const returnType&) = &function;
+			functionPtr( 5, 0.2f, returnType() );
 
-		TestClass instance;
-		returnType(TestClass::*methodPtr)(long,returnType*) = &TestClass::method;
-		returnType arg2;
-		(instance.*methodPtr)( 5, &arg2 );
+			TestClass instance;
+			returnType(TestClass::*methodPtr)(long,returnType*) = &TestClass::method;
+			returnType arg2;
+			(instance.*methodPtr)( 5l, &arg2 );
+		}
+
+		std::cout << std::endl;
+
+		{
+			std::function<returnType(int,float,const returnType&)> funcFunctor( function );
+			funcFunctor(5, 0.3f, returnType() );
+
+			TestClass instance;
+			std::_Binder< std::_Unforced, returnType(TestClass::*)(long,returnType*), TestClass*, long, const std::_Ph<1>& >  methodFunctor = std::bind( &TestClass::method, &instance, 5l, std::placeholders::_1 );
+			returnType arg2;
+			methodFunctor( &arg2 );
+		}
 	}
 };
 
