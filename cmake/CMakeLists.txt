@@ -77,6 +77,7 @@ source_group( examples FILES
 			${CPP_HELPER_SRC_DIR}/Random.h
 			${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
 			${CPP_HELPER_SRC_DIR}/Attributes.h
+			${CPP_HELPER_SRC_DIR}/Exceptions.h
 			)
  
 set( CPP_HELPER_SRC 
@@ -116,6 +117,7 @@ set( CPP_HELPER_SRC
 	${CPP_HELPER_SRC_DIR}/Namespaces.h
 	${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
 	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
+	${CPP_HELPER_SRC_DIR}/Exceptions.h
     )
 
 

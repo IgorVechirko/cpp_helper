@@ -30,11 +30,12 @@
 #include "OperatorsOverrides.h"
 #include "Attributes.h"
 #include "Namespaces.h"
+#include "Exceptions.h"
 
 
 int main()
 {
-	Namespaces::example();
+	Exceptions::example();
 
 	std::cin.get();
 
