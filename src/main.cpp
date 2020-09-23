@@ -35,7 +35,7 @@
 
 int main()
 {
-	Exceptions::example();
+	Algorithms::example();
 
 	std::cin.get();
 

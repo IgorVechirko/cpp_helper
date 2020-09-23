@@ -20,6 +20,30 @@ namespace Algorithms
 	void example()
 	{
 		// see https://en.cppreference.com/w/cpp/algorithm
+
+		{
+			std::vector<int> coll(10);
+			for( int i = 0; i < coll.size(); i++ )
+				coll[i] = i;
+
+			std::remove_if( coll.begin(), coll.end(), [](int elem) {
+				return elem == 5;
+			});
+
+			std::cout << "without removing remaining elems" << std::endl;
+			for( auto elem : coll )
+				std::cout << elem << " ";
+			std::cout << std::endl;
+
+			coll.resize( coll.size() - 1 );
+
+			std::cout << "with removing remaining elems" << std::endl;
+			for( auto elem : coll )
+				std::cout << elem << " ";
+			std::cout << std::endl;
+
+		}
+
 	}
 
 }
