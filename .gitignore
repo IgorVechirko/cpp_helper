@@ -1,2 +1,3 @@
 .vscode
 proj.cmake
+proj.win32/
