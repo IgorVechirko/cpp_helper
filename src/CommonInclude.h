@@ -10,6 +10,7 @@
 #include <memory>
 #include <limits>
 #include <functional>
+#include <array>
 
 #define LOGOUT_FUNC std::cout << __FUNCTION__ << std::endl;
 
