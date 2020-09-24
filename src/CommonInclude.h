@@ -11,6 +11,7 @@
 #include <limits>
 #include <functional>
 #include <array>
+#include <assert.h>
 
 #define LOGOUT_FUNC std::cout << __FUNCTION__ << std::endl;
 

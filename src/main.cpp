@@ -31,11 +31,17 @@
 #include "Attributes.h"
 #include "Namespaces.h"
 #include "Exceptions.h"
-
+#include "FreeListAllocator.h"
 
 int main()
 {
-	Algorithms::example();
+	std::vector<int,FreeListAllocator> vector(1000);
+
+	for( int i = 0; i < vector.size(); i++ )
+		vector[i] = i;
+
+	vector.erase( std::next( vector.begin(), 100 ) );
+
 
 	std::cin.get();
 

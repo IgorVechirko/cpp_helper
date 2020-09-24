@@ -31,6 +31,17 @@ target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
 
 #sources
 
+
+
+set( Allocator ${CPP_HELPER_SRC_DIR}/Allocator.h ${CPP_HELPER_SRC_DIR}/Allocator.cpp )
+set( FreeListAllocator ${CPP_HELPER_SRC_DIR}/FreeListAllocator.h ${CPP_HELPER_SRC_DIR}/FreeListAllocator.cpp )
+
+
+source_group( allocator FILES 
+	${Allocator}
+	${FreeListAllocator}
+)
+
 source_group( examples\\extern_key_word FILES ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
 											  ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
 											  ${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
@@ -76,8 +87,8 @@ source_group( examples FILES
 			${CPP_HELPER_SRC_DIR}/Chrono.h
 			${CPP_HELPER_SRC_DIR}/Random.h
 			${CPP_HELPER_SRC_DIR}/OperatorsOverrides.h
-			${CPP_HELPER_SRC_DIR}/Attributes.h
 			${CPP_HELPER_SRC_DIR}/Exceptions.h
+			${CPP_HELPER_SRC_DIR}/Attributes.h
 			)
  
 set( CPP_HELPER_SRC 
@@ -118,6 +129,8 @@ set( CPP_HELPER_SRC
 	${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
 	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
 	${CPP_HELPER_SRC_DIR}/Exceptions.h
+	${Allocator}
+	${FreeListAllocator}
     )
 
 
