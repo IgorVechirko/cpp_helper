@@ -39,6 +39,7 @@ inline void* alignForward( void* address, uint8_t alignment )
 inline intptr_t alignForwardAdjustment( const void* address, intptr_t alignment ) 
 {
 	intptr_t adjustment = alignment - ( reinterpret_cast<intptr_t>(address) & (alignment-1) );
+	return 0;
 }
 inline intptr_t alignForwardAdjustmentWithHeader( const void* address, intptr_t alignment, intptr_t headerSize )
 {

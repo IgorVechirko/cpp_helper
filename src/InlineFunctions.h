@@ -7,7 +7,7 @@
 namespace InlineFunctions
 {
 	/* inline it's hint for compiler, it's isn't necessary that in finish code function will be inline.
-	For compilers exist options for setup depth for recursive inline funcions nesting*/
+	In some compilers exist options for setup depth for recursive inline funcions nesting*/
 	inline unsigned factorial( int a )
 	{
 		std::cout << __LINE__ << std::endl;

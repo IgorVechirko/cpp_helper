@@ -10,43 +10,14 @@ namespace SmartPointers
 	{
 		public:
 				
-			TestClass()
-			{
-				LOGOUT_FUNC
-			}
-			
-			virtual ~TestClass()
-			{
-				LOGOUT_FUNC
-			}
+			TestClass();
+			virtual ~TestClass();
 
 	};
 
-	void sharedPtrExample()
-	{
-		std::shared_ptr<TestClass> sparePtr;
+	void sharedPtrExample();
+	void uniquePtrExample();
 
-		{
-			auto sharedPtr = std::shared_ptr<TestClass>( new TestClass() );
-			sparePtr = sharedPtr;
-			std::cout << "finish local block" << std::endl;
-		}
-
-		std::cout << "finish " << __FUNCTION__ << " block" << std::endl;
-	}
-
-	void uniquePtrExample()
-	{
-		std::shared_ptr<TestClass> sparePtr;
-
-		{
-			auto uniquePtr = std::unique_ptr<TestClass>( new TestClass() );
-			//sparePtr = uniquePtr; can'r create copy;
-			std::cout << "finish local block" << std::endl;
-		}
-	}
-
-	
 
 	class SharedPtrCycleRelation
 	{
@@ -88,30 +59,8 @@ namespace SmartPointers
 
 		public:
 
-			SharedPtrCycleRelation()
-			{
-				LOGOUT_FUNC
-
-				std::vector<std::string> persons = { "person1", "person2", "person3", "person4" };
-				std::vector<std::string> casts = { "casta1", "casta2", "casta3", "casta4" };
-
-				for( const auto& person : persons )
-					humans.push_back( std::shared_ptr<sHuman>( new sHuman{ person } ) );
-
-				for( const auto& casta : casts )
-					groups.push_back( std::shared_ptr<sGroup>( new sGroup{ casta } ) );
-
-				for( auto humanPtr : humans )
-					humanPtr->groups = groups;
-
-				for( auto groupPtr : groups )
-					groupPtr->humans = humans;
-
-			}
-			virtual ~SharedPtrCycleRelation()
-			{
-				LOGOUT_FUNC
-			}
+			SharedPtrCycleRelation();
+			virtual ~SharedPtrCycleRelation();
 	};
 
 	class ResolveSharedPtrCycleRelationWithWeakPtr
@@ -154,40 +103,8 @@ namespace SmartPointers
 
 		public:
 
-			ResolveSharedPtrCycleRelationWithWeakPtr()
-			{
-				LOGOUT_FUNC
-
-				std::vector<std::string> persons = { "person1", "person2", "person3", "person4" };
-				std::vector<std::string> casts = { "casta1", "casta2", "casta3", "casta4" };
-
-				for( const auto& person : persons )
-					humans.push_back( std::shared_ptr<sHuman>( new sHuman{ person } ) );
-
-				for( const auto& casta : casts )
-					groups.push_back( std::shared_ptr<sGroup>( new sGroup{ casta } ) );
-
-				for( const auto& humanPtr : humans )
-				{
-					for( const auto& groupPtr : groups )
-					{
-						humanPtr->groups.push_back( std::weak_ptr<sGroup>(groupPtr) );
-					}
-				}
-
-				for( const auto& group : groups )
-				{
-					for( const auto& human : humans )
-					{
-						group->humans.push_back( std::weak_ptr<sHuman>( human ) );
-					}
-				}
-
-			}
-			virtual ~ResolveSharedPtrCycleRelationWithWeakPtr()
-			{
-				LOGOUT_FUNC
-			}
+			ResolveSharedPtrCycleRelationWithWeakPtr();
+			virtual ~ResolveSharedPtrCycleRelationWithWeakPtr();
 	};
 
 	class UniquePtrTest
@@ -196,14 +113,8 @@ namespace SmartPointers
 
 	public:
 
-		UniquePtrTest()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~UniquePtrTest()
-		{
-			LOGOUT_FUNC
-		}
+		UniquePtrTest();
+		virtual ~UniquePtrTest();
 
 	};
 
@@ -212,18 +123,8 @@ namespace SmartPointers
 
 	public:
 
-		void* allocate( size_t size )
-		{
-			LOGOUT_FUNC
-
-			return new char[size];
-		}
-		void deallocate( void* ptr ) const
-		{
-			LOGOUT_FUNC
-
-			delete[] ptr;
-		}
+		void* allocate( size_t size );
+		void deallocate( void* ptr ) const;
 
 		template< typename T>
 		void operator() (T* ptr) const
@@ -236,27 +137,7 @@ namespace SmartPointers
 	};
 
 
-	void example()
-	{
-		{
-			SharedPtrCycleRelation sharedPtrCycleRelation;
-		}
-
-		std::cout << std::endl << std::endl;
-
-		{
-			ResolveSharedPtrCycleRelationWithWeakPtr resolveSharedPtrCycleRelationWithWeakPtr;
-		}
-
-		std::cout << std::endl << std::endl;
-
-		{
-			Allocator allocator;
-			auto testInstance = new( allocator.allocate(sizeof(UniquePtrTest)) ) UniquePtrTest();
-			auto uniquePtr = std::unique_ptr<UniquePtrTest,Allocator&>(testInstance, allocator );
-
-		}
-	}
+	void example();
 
 };
 

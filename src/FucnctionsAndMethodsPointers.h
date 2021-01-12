@@ -2,20 +2,22 @@
 #define FucnctionsAndMethodsPointers_H
 
 #include "CommonInclude.h"
+#include <functional>
 
 namespace FucnctionsAndMethodsPointers
 {
 	struct returnType
 	{
-		int integer;
-		char symb;
+		int integer = 0;
+		char symb = 0;
 	};
 
 	returnType function( int arg1, float arg2, const returnType& arg3 )
 	{
 		std::cout<< __FUNCTION__ << std::endl;
 
-		return returnType();
+		returnType result;
+		return result;
 	}
 
 	class TestClass

@@ -9,7 +9,7 @@ Allocator::Allocator( size_t size, void* start )
 }
 Allocator::~Allocator()
 {
-	assert( _numAllocations == 0 && _used_memory == 0 );
+	//assert( _numAllocations == 0 && _used_memory == 0 );
 }
 size_t Allocator::getSize() const
 {

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "FucnctionsAndMethodsPointers.h"
+/*#include "FucnctionsAndMethodsPointers.h"
 //#include "MemoryAllocations.h"//here override new/delete operators
 #include "SmartPointers.h"
 #include "Templates.h"
@@ -31,17 +31,21 @@
 #include "Attributes.h"
 #include "Namespaces.h"
 #include "Exceptions.h"
-#include "FreeListAllocator.h"
+#include "FreeListAllocator.h"*/
+
+#include "Attributes.h"
+#include "ClassesAndStructures.h"
+#include "FucnctionsAndMethodsPointers.h"
+#include "InlineFunctions.h"
+#include "Lambdas.h"
+#include "RvalueLvalueSemantic.h"
+#include "SmartPointers.h"
+
+
 
 int main()
 {
-	std::vector<int,FreeListAllocator> vector(1000);
-
-	for( int i = 0; i < vector.size(); i++ )
-		vector[i] = i;
-
-	vector.erase( std::next( vector.begin(), 100 ) );
-
+	SmartPointers::example();
 
 	std::cin.get();
 

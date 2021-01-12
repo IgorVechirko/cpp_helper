@@ -11,20 +11,14 @@ namespace ClassesAndStructures
 	{
 		std::string baseStructMember = "baseStructMember";
 		
-		virtual void structVirtualMethod()
-		{
-			std::cout << "structVirtualMethod member = " << baseStructMember << std::endl;
-		}
+		virtual void structVirtualMethod();
 	};
 
 	struct ChildStruct : BaseStruct // same as public
 	{
 		std::string childStructMember = "childStructMember";
 		
-		void structVirtualMethod() override
-		{
-			std::cout << "structVirtualMethod member = " << childStructMember << std::endl;
-		}
+		void structVirtualMethod() override;
 	};
 	
 	class BaseClass
@@ -35,18 +29,10 @@ namespace ClassesAndStructures
 		
 			std::string baseClassMember = "baseClassMember";
 		
-			BaseClass()
-			{
-				std::cout << "_staticMember = " << _staticMember << std::endl;
-			}
+			BaseClass();
 
-			virtual void classVirtualMethod()
-			{
-				std::cout << "classVirtualMethod member = " << baseClassMember << std::endl;
-			}
+			virtual void classVirtualMethod();
 	};
-
-	std::string BaseClass::_staticMember = "THIS IS STATIC MEMBER";
 
 
 	class ChildClass : BaseClass // same as private
@@ -55,10 +41,7 @@ namespace ClassesAndStructures
 			
 			std::string childClassMember = "childClassMember";
 		
-			void classVirtualMethod() override
-			{
-				std::cout << "classVirtualMethod member = " << childClassMember << std::endl;
-			}
+			void classVirtualMethod() override;
 	};
 
 	class TestClass : ChildStruct // same as private
@@ -72,11 +55,7 @@ namespace ClassesAndStructures
 	{
 		std::string baseStructMember = "testStructMember";
 		
-		void classVirtualMethod() override
-		{
-			std::cout << "classVirtualMethod member = " << baseStructMember << std::endl;
-			std::cout << "classVirtualMethod member = " << BaseStruct::baseStructMember << std::endl;
-		}
+		void classVirtualMethod() override;
 		
 	};
 
@@ -84,40 +63,27 @@ namespace ClassesAndStructures
 	{
 	public:
 
-		ChildeClass1()
-		{
-		}
+		ChildeClass1();
 
-		virtual ~ChildeClass1()
-		{
-		};
+		virtual ~ChildeClass1();
 	};
 
 	class ChildeClass2 : virtual public BaseClass
 	{
 	public:
 
-		ChildeClass2()
-		{
-		}
+		ChildeClass2();
 
-		virtual ~ChildeClass2()
-		{
-		};
+		virtual ~ChildeClass2();
 	};
 
 	class MultipleInheritanceClass : public ChildeClass1 , public ChildeClass2
 	{
 	public:
 
-		MultipleInheritanceClass()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~MultipleInheritanceClass()
-		{
-			LOGOUT_FUNC
-		}
+		MultipleInheritanceClass();
+
+		virtual ~MultipleInheritanceClass();
 
 	};
 
@@ -126,14 +92,9 @@ namespace ClassesAndStructures
 	{
 	public:
 
-		ConstructionFirstBaseClass()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~ConstructionFirstBaseClass()
-		{
-			LOGOUT_FUNC
-		}
+		ConstructionFirstBaseClass();
+
+		virtual ~ConstructionFirstBaseClass();
 	};
 
 	class ConstructionSecondBaseClass
@@ -141,14 +102,9 @@ namespace ClassesAndStructures
 
 	public:
 
-		ConstructionSecondBaseClass()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~ConstructionSecondBaseClass()
-		{
-			LOGOUT_FUNC
-		}
+		ConstructionSecondBaseClass();
+
+		virtual ~ConstructionSecondBaseClass();
 
 	};
 
@@ -157,14 +113,10 @@ namespace ClassesAndStructures
 
 	public:
 
-		ConstructionMember1()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~ConstructionMember1()
-		{
-			LOGOUT_FUNC
-		}
+		ConstructionMember1();
+
+		virtual ~ConstructionMember1();
+
 	};
 
 	class ConstructionMember2
@@ -172,14 +124,9 @@ namespace ClassesAndStructures
 
 	public:
 
-		ConstructionMember2()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~ConstructionMember2()
-		{
-			LOGOUT_FUNC
-		}
+		ConstructionMember2();
+
+		virtual ~ConstructionMember2();
 	};
 
 	class ConstructClass 
@@ -193,60 +140,14 @@ namespace ClassesAndStructures
 		
 	public:
 
-		ConstructClass()
-			: ConstructionSecondBaseClass()
-			, ConstructionFirstBaseClass()
-			, member2()
-			, member1()
-		{
-			LOGOUT_FUNC
-		}
-		virtual ~ConstructClass()
-		{
-			LOGOUT_FUNC
-		}
+		ConstructClass();
+
+		virtual ~ConstructClass();
 	};
 
 
+	void example();
 
-	void example()
-	{
-		LOGOUT_FUNC
-		{
-			TestClass testClassInstance;
-		
-			//std::cout << testClassInstance.baseStructMember << std::endl;// no access
-			//std::cout << testClassInstance.baseClassMember << std::endl;// no access
-			//std::cout << testClassInstance.childStructMember << std::endl;// no access
-			std::cout << "has access to " << testClassInstance.childClassMember << std::endl;
-			//testClassInstance.structVirtualMethod(); / no access
-			testClassInstance.classVirtualMethod();
-		
-			TestStruct testStructInstance;
-			std::cout << "has access to " << testStructInstance.baseStructMember << std::endl;
-			//std::cout << testStructInstance.baseClassMember << std::endl;// no access
-			std::cout << "has access to " << testStructInstance.childStructMember << std::endl;
-			std::cout << "has access to " << testStructInstance.childClassMember << std::endl;
-			testStructInstance.structVirtualMethod();
-			testStructInstance.classVirtualMethod();
-		}
-
-		std::cout << std::endl;
-
-		{
-			MultipleInheritanceClass instance;
-			instance.classVirtualMethod();//multiple inheritance solved throw using virtual inheritance
-
-		}
-
-		std::cout << std::endl;
-
-		{
-			ConstructClass instance;
-		}
-		
-		
-	}
 }
 
 #endif
