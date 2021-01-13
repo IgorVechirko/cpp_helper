@@ -1,7 +1,6 @@
 #ifndef ClassesAndStructures_H
 #define ClassesAndStructures_H
 
-#include "CommonInclude.h"
 #include <string>
 
 namespace ClassesAndStructures

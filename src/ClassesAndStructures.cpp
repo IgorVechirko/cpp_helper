@@ -1,5 +1,7 @@
 #include "ClassesAndStructures.h"
 
+#include "CommonInclude.h"
+
 std::string ClassesAndStructures::BaseClass::_staticMember = "THIS IS STATIC MEMBER";
 
 namespace ClassesAndStructures

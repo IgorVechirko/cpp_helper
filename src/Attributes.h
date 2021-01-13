@@ -1,8 +1,6 @@
 #ifndef Attributes_H
 #define Attributes_H
 
-#include "CommonInclude.h"
-
 namespace Attributes
 {
     [[ deprecated ]] void deprecatedFunc();

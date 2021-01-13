@@ -40,12 +40,17 @@
 #include "Lambdas.h"
 #include "RvalueLvalueSemantic.h"
 #include "SmartPointers.h"
+#include "Templates.h"
+#include "ParallelProgramming.h"
+#include "Chrono.h"
+#include "Random.h"
+#include "OperatorsOverrides.h"
 
 
 
 int main()
 {
-	SmartPointers::example();
+	OperatorsOverrides::example();
 
 	std::cin.get();
 

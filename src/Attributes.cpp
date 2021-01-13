@@ -1,5 +1,7 @@
 #include "Attributes.h"
 
+#include "CommonInclude.h"
+
 namespace Attributes
 {
 

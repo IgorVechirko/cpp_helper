@@ -2,6 +2,8 @@
 #define Templates_H
 
 #include "CommonInclude.h"
+#include <vector>
+#include <array>
 
 namespace Templates
 {
