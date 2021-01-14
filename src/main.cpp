@@ -28,12 +28,23 @@
 #include "NumericLimits.h"
 #include "ValotileRegisterKeyWords.h"
 #include "VirtualAndOverrideKeyWords.h"
+//#include "MemoryAllocations.h"
+#include "DebugTools.h"
+#include "StaticLibUsing.h"
 
+//not finished
+#include "RTTIEmulation.h"
+
+#ifdef _WINDOWS
+
+#include "DynamicLibUsing.h"
+
+#endif
 
 
 int main()
 {
-	VirtualAndOverrideKeyWords::example();
+	StaticLibUsing::example();
 
 	std::cin.get();
 

@@ -8,27 +8,36 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
+
 #static lib
-set( STATIC_LIB_SRC ${CPP_HELPER_SRC_DIR}/StaticLib.cpp
-					${CPP_HELPER_SRC_DIR}/StaticLib.h
-					)
+set( STATIC_LIB_SRC 
+	${CPP_HELPER_SRC_DIR}/StaticLib.cpp
+	${CPP_HELPER_SRC_DIR}/StaticLib.h
+)
 
 add_library( static_lib STATIC ${STATIC_LIB_SRC} )
 
 target_include_directories( static_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
 target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
 
+
+
 #dynamic lib
-set( DYNAMIC_LIB_SRC ${CPP_HELPER_SRC_DIR}/DynamicLib.cpp
-					 ${CPP_HELPER_SRC_DIR}/DynamicLib.h
-					 )
+if ( MSVC )
 
-add_library( dynamic_lib SHARED ${DYNAMIC_LIB_SRC} )
+	
+	set( DYNAMIC_LIB_SRC 
+		${CPP_HELPER_SRC_DIR}/DynamicLib.cpp
+		${CPP_HELPER_SRC_DIR}/DynamicLib.h
+	)
 
-target_include_directories( dynamic_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
-target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
-target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
+	add_library( dynamic_lib SHARED ${DYNAMIC_LIB_SRC} )
 
+	target_include_directories( dynamic_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+	target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
+	target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
+
+endif()
 
 
 
@@ -150,6 +159,22 @@ set( Exeptions
 	${CPP_HELPER_SRC_DIR}/Exceptions.h
 )
 
+set( MemoryAllocations 
+	${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
+)
+
+set( DebugTools 
+	 ${CPP_HELPER_SRC_DIR}/DebugTools.h
+)
+
+set( RTTIEmulation 
+	${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
+)
+
+set( StaticLibUsing 
+	${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
+)
+
 source_group( examples\\stl FILES ${Stl} )
 source_group( examples\\extern_key_word FILES ${ExternKeyWord} )
 source_group( examples\\atributes FILES ${Atributes} )
@@ -173,15 +198,12 @@ source_group( examples\\random FILES ${Random} )
 source_group( examples\\operators_overrides FILES ${OperatorsOverrides} )
 source_group( examples\\exeptions FILES ${Exeptions} )
 source_group( examples\\namespaces FILES ${Namespaces} )
-source_group( main FILES ${Main} )
+source_group( examples\\memory_allocatin FILES ${MemoryAllocations} )
+source_group( examples\\debug_tools FILES ${DebugTools} )
+source_group( examples\\rtti_emulation FILES ${RTTIEmulation} )
+source_group( examples\\static_lib_using FILES ${StaticLibUsing} )
 
-source_group( examples FILES 
-			${CPP_HELPER_SRC_DIR}/DebugTools.h
-			${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
-			${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
-			${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
-			${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
-			)
+source_group( main FILES ${Main} )
  
 set( CPP_HELPER_SRC
 	${Stl}
@@ -208,15 +230,24 @@ set( CPP_HELPER_SRC
 	${OperatorsOverrides}
 	${Namespaces}
 	${Namespaces}
+	${MemoryAllocations}
+	${DebugTools}
+	${RTTIEmulation}
+	${StaticLibUsing}
 	${Main}
-    ${CPP_HELPER_SRC_DIR}/DebugTools.h
-    ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
-    ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
-	${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
-	${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
 )
 
+if ( MSVC )
 
+	set( DynamicLibUsing 
+		${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
+	)
+
+	source_group( examples\\dynamic_lib_using FILES ${DynamicLibUsing} )
+
+	list( APPEND CPP_HELPER_SRC ${DynamicLibUsing} )
+
+endif()
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
