@@ -26,7 +26,7 @@ namespace Algorithms
 			for( int i = 0; i < coll.size(); i++ )
 				coll[i] = i;
 
-			std::remove_if( coll.begin(), coll.end(), [](int elem) {
+			auto newEnd = std::remove_if( coll.begin(), coll.end(), [](int elem) {
 				return elem == 5;
 			});
 
@@ -35,7 +35,7 @@ namespace Algorithms
 				std::cout << elem << " ";
 			std::cout << std::endl;
 
-			coll.resize( coll.size() - 1 );
+			coll.erase( newEnd, coll.end() );
 
 			std::cout << "with removing remaining elems" << std::endl;
 			for( auto elem : coll )
