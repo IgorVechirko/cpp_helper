@@ -33,34 +33,28 @@ target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
 
 
 #sources
-set( Allocator ${CPP_HELPER_SRC_DIR}/Allocator.h ${CPP_HELPER_SRC_DIR}/Allocator.cpp )
-set( FreeListAllocator ${CPP_HELPER_SRC_DIR}/FreeListAllocator.h ${CPP_HELPER_SRC_DIR}/FreeListAllocator.cpp )
 
-
-source_group( allocator FILES 
-	${Allocator}
-	${FreeListAllocator}
+set( Main 
+	${CPP_HELPER_SRC_DIR}/main.cpp
+	${CPP_HELPER_SRC_DIR}/CommonInclude.h
 )
 
-source_group( examples\\extern_key_word FILES ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
-											  ${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
-											  ${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
-											  )
+set( Stl 
+	${CPP_HELPER_SRC_DIR}/Containers.h
+	${CPP_HELPER_SRC_DIR}/Iterators.h
+	${CPP_HELPER_SRC_DIR}/Algorithms.h
+)
 
-source_group( examples\\main_stl FILES 
-				${CPP_HELPER_SRC_DIR}/Containers.h
-				${CPP_HELPER_SRC_DIR}/Iterators.h
-				${CPP_HELPER_SRC_DIR}/Algorithms.h
-				)
-
-source_group( main FILES ${CPP_HELPER_SRC_DIR}/main.cpp )
-
-
+set( ExternKeyWord 
+	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
+	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
+	${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
+)
 
 set( Namespaces 
 	${CPP_HELPER_SRC_DIR}/Namespaces.h
 	${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
-	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp)
+	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
 )
 
 set( Atributes 
@@ -156,6 +150,8 @@ set( Exeptions
 	${CPP_HELPER_SRC_DIR}/Exceptions.h
 )
 
+source_group( examples\\stl FILES ${Stl} )
+source_group( examples\\extern_key_word FILES ${ExternKeyWord} )
 source_group( examples\\atributes FILES ${Atributes} )
 source_group( examples\\classes_and_structures FILES ${ClassesAndStructures} )
 source_group( examples\\final_key_word FILES ${FinalKeyWord} )
@@ -177,9 +173,9 @@ source_group( examples\\random FILES ${Random} )
 source_group( examples\\operators_overrides FILES ${OperatorsOverrides} )
 source_group( examples\\exeptions FILES ${Exeptions} )
 source_group( examples\\namespaces FILES ${Namespaces} )
+source_group( main FILES ${Main} )
 
 source_group( examples FILES 
-			${CPP_HELPER_SRC_DIR}/CommonInclude.h
 			${CPP_HELPER_SRC_DIR}/DebugTools.h
 			${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
 			${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
@@ -187,7 +183,9 @@ source_group( examples FILES
 			${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
 			)
  
-set( CPP_HELPER_SRC 
+set( CPP_HELPER_SRC
+	${Stl}
+	${ExternKeyWord}
 	${Atributes}
 	${ClassesAndStructures}
 	${FinalKeyWord}
@@ -210,26 +208,15 @@ set( CPP_HELPER_SRC
 	${OperatorsOverrides}
 	${Namespaces}
 	${Namespaces}
-	${CPP_HELPER_SRC_DIR}/main.cpp
-    ${CPP_HELPER_SRC_DIR}/CommonInclude.h
+	${Main}
     ${CPP_HELPER_SRC_DIR}/DebugTools.h
     ${CPP_HELPER_SRC_DIR}/MemoryAllocations.h
     ${CPP_HELPER_SRC_DIR}/RTTIEmulation.h
 	${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
 	${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
-	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU1.cpp
-	${CPP_HELPER_SRC_DIR}/ExternKeyWordCU2.cpp
-	${CPP_HELPER_SRC_DIR}/ExternKeyWord.h
-	${CPP_HELPER_SRC_DIR}/Ratio.h
-	${CPP_HELPER_SRC_DIR}/Containers.h
-	${CPP_HELPER_SRC_DIR}/Iterators.h
-	${CPP_HELPER_SRC_DIR}/Algorithms.h
-	${CPP_HELPER_SRC_DIR}/Namespaces.h
-	${CPP_HELPER_SRC_DIR}/NamespacesTU1.cpp
-	${CPP_HELPER_SRC_DIR}/NamespacesTU2.cpp
-	${Allocator}
-	${FreeListAllocator}
-    )
+)
+
+
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
