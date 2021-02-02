@@ -19,7 +19,7 @@ namespace Containers
 {
 	void example()
 	{
-		std::array<int,4> intArray;
+		std::array<int,4> intArray{ 4, 4, 4, 4 };
 
 		std::vector<float> floatVector;
 

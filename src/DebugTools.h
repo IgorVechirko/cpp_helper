@@ -11,7 +11,7 @@ namespace DebugTools
 		std::default_random_engine dre;
 		std::uniform_real_distribution<float> df(0.0f, 1.01f);
 
-		float arr[10000];
+		float* arr = new float[10000];
 
 		for( int indx = 0; indx < 10000; indx++ )
 		{
@@ -20,6 +20,8 @@ namespace DebugTools
 
 			bool hitBraeakPointIfIndxEqual40 = true;
 		}
+
+		delete[] arr;
 
 		LOGOUT_FUNC
 	}

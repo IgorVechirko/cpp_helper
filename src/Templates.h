@@ -136,7 +136,7 @@ namespace Templates
 				for( int j = 0; j < columns; j++ )
 					_matrix[i][j] = other._matrix[i][j];
 		}
-		Matrix( self_type&& other )
+		Matrix( self_type&& other ) noexcept
 		{
 			std::swap( _matrix, other._matrix );
 		}
@@ -173,7 +173,7 @@ namespace Templates
 
 			for( int i = 0; i < rows; i++ )
 				for( int j = 0; j < columns; j++ )
-					result[i][j] += other[i][j];
+					result[i][j] += static_cast<T>(other[i][j]);
 
 			return result;
 		}
@@ -185,7 +185,7 @@ namespace Templates
 			for( int i = 0; i < rows; i++ )
 				for( int j = 0; j < otherColumns; j++ )
 					for( int n = 0; n < columns; n++ )
-						result[i][j] += _matrix[i][n]*other[n][j]; 
+						result[i][j] += static_cast<T>(_matrix[i][n]*other[n][j]); 
 		
 
 			return result;
@@ -196,7 +196,7 @@ namespace Templates
 			Matrix<CastedType,rows,columns> result(0);
 
 			for( int i = 0; i < rows; i++ )
-				for( int  j = 0; j > columns; j++ )
+				for( int  j = 0; j < columns; j++ ) 
 					result[i][j] = static_cast<CastedType>(_matrix[i][j]);
 
 			return result;
@@ -252,7 +252,7 @@ namespace Templates
 			for( int i = 0; i < size; i++ )
 				_vector[i] = other._vector[i];
 		}
-		Vector( self_type&& other )
+		Vector( self_type&& other ) noexcept
 		{
 			std::swap( _vector, other._vector );
 		}
@@ -287,7 +287,7 @@ namespace Templates
 			self_type result(*this);
 
 			for( int i = 0; i < size; i++ )
-				result._vector[i] += other[i];
+				result._vector[i] += static_cast<T>(other[i]);
 
 			return result;
 		}
@@ -298,7 +298,7 @@ namespace Templates
 
 			for( int i = 0; i < matrixColumns; i++ )
 				for( int n = 0; n < size; n++ )
-					result[i] += _vector[n] * matrix[n][i];
+					result[i] += _vector[n] * static_cast<T>(matrix[n][i]);
 
 			return result;
 		}
@@ -308,7 +308,7 @@ namespace Templates
 			T result = 0;
 
 			 for( int i = 0; i < size; i++ )
-				 result += _vector[i] * other[i];
+				 result += _vector[i] * static_cast<T>(other[i]);
 
 			return result;
 		}

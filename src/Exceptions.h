@@ -16,7 +16,7 @@ namespace Exceptions
 
 	public:
 
-		LeackExample( const char* data, size_t size ) throw( char* )
+		LeackExample( const char* data, size_t size )
 		{
 			LOGOUT_FUNC
 			str = new char[size];

@@ -19,7 +19,7 @@ namespace Iterators
 {
 	void example()
 	{
-		std::array<int,4> intArray;
+		std::array<int,4> intArray{ 4, 4, 4, 4 };
 
 		std::vector<float> floatVector{ 1.0, 2.0f, 3.0f, 0.485f, 94.0, 0.343f };
 

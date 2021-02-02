@@ -8,43 +8,55 @@
 
 #include "Attributes.h"
 #include "ClassesAndStructures.h"
+#include "FinalKeyWord.h"
 #include "FucnctionsAndMethodsPointers.h"
 #include "InlineFunctions.h"
 #include "Lambdas.h"
 #include "RvalueLvalueSemantic.h"
 #include "SmartPointers.h"
 #include "Templates.h"
-#include "ParallelProgramming.h"
-#include "Chrono.h"
-#include "Random.h"
-#include "OperatorsOverrides.h"
-#include "Exceptions.h"
-#include "ExplicitKeyWord.h"
-#include "ExternKeyWord.h"
-#include "FinalKeyWord.h"
-#include "MinMaxFuncs.h"
-#include "MutableKeyWord.h"
-#include "Namespaces.h"
-#include "NumericLimits.h"
-#include "ValotileRegisterKeyWords.h"
 #include "VirtualAndOverrideKeyWords.h"
-//#include "MemoryAllocations.h"
+#include "ExplicitKeyWord.h"
+#include "MutableKeyWord.h"
+#include "ValotileRegisterKeyWords.h"
+#include "ParallelProgramming.h"
+#include "NumericLimits.h"
+#include "MinMaxFuncs.h"
+#include "Chrono.h"
+#include "Exceptions.h"
+#include "OperatorsOverrides.h"
+#include "Namespaces.h"
 #include "DebugTools.h"
-#include "StaticLibUsing.h"
+#include "ExternKeyWord.h"
+#include "Random.h"
 
 //not finished
-#include "RTTIEmulation.h"
+//#include "MemoryAllocations.h"
+//#include "RTTIEmulation.h"
+
+/*
+
+
+
+
+
+
+
+#include "StaticLibUsing.h"*/
+
+//not finished
+
 
 #ifdef _WINDOWS
 
-#include "DynamicLibUsing.h"
+//#include "DynamicLibUsing.h"
 
-#endif
+#endif*/
 
 
 int main()
 {
-	StaticLibUsing::example();
+	ExternKeyWord::example();
 
 	std::cin.get();
 

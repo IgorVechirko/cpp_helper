@@ -48,7 +48,7 @@ namespace OperatorsOverrides
 		ComplexNum cmplNum( 3, 4 );
 		std::cout << cmplNum << std::endl;
 		int num = cmplNum;
-		if( cmplNum == ComplexNum(4,3) );
+		if( cmplNum == ComplexNum(4,3) ) auto ret = true;
 
 		std::cout << std::chrono::nanoseconds(3) << std::endl;
 	}

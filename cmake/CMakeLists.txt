@@ -9,7 +9,7 @@ set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
 
-#static lib
+#[[static lib
 set( STATIC_LIB_SRC 
 	${CPP_HELPER_SRC_DIR}/StaticLib.cpp
 	${CPP_HELPER_SRC_DIR}/StaticLib.h
@@ -37,7 +37,7 @@ if ( MSVC )
 	target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
 	target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
 
-endif()
+endif()]]
 
 
 
@@ -229,14 +229,14 @@ set( CPP_HELPER_SRC
 	${Exeptions}
 	${OperatorsOverrides}
 	${Namespaces}
-	${Namespaces}
 	${MemoryAllocations}
 	${DebugTools}
 	${RTTIEmulation}
-	${StaticLibUsing}
+	#[[${StaticLibUsing}]]
 	${Main}
 )
 
+#[[
 if ( MSVC )
 
 	set( DynamicLibUsing 
@@ -247,12 +247,12 @@ if ( MSVC )
 
 	list( APPEND CPP_HELPER_SRC ${DynamicLibUsing} )
 
-endif()
+endif()]]
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
 include_directories( ${CPP_HELPER_SRC_DIR} )
-target_link_libraries( cpp_helper static_lib dynamic_lib )
+#target_link_libraries( cpp_helper static_lib dynamic_lib )
 
 
 find_library( PTHREAD_LIB pthread )
