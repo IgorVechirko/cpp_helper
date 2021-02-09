@@ -29,6 +29,7 @@
 #include "DebugTools.h"
 #include "ExternKeyWord.h"
 #include "Random.h"
+#include "StaticLibUsing.h"
 
 //not finished
 //#include "MemoryAllocations.h"
@@ -42,7 +43,7 @@
 
 
 
-#include "StaticLibUsing.h"*/
+*/
 
 //not finished
 
@@ -56,7 +57,7 @@
 
 int main()
 {
-	ExternKeyWord::example();
+	StaticLibUsing::example();
 
 	std::cin.get();
 

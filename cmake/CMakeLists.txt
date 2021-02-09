@@ -9,20 +9,27 @@ set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
 
-#[[static lib
-set( STATIC_LIB_SRC 
-	${CPP_HELPER_SRC_DIR}/StaticLib.cpp
-	${CPP_HELPER_SRC_DIR}/StaticLib.h
-)
+#set(BUILD_STATIC_LIB TRUE)
+option( BUILD_STATIC_LIB "Add static lib example to build" ON )
 
-add_library( static_lib STATIC ${STATIC_LIB_SRC} )
+if ( BUILD_STATIC_LIB )
+	#static lib
 
-target_include_directories( static_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
-target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
+	message( "Build with static lib example" )
+
+	set( STATIC_LIB_SRC 
+		${CPP_HELPER_SRC_DIR}/StaticLib.cpp
+		${CPP_HELPER_SRC_DIR}/StaticLib.h
+	)
+
+	add_library( static_lib STATIC ${STATIC_LIB_SRC} )
+
+	target_include_directories( static_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+	target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
+endif()
 
 
-
-#dynamic lib
+#[[dynamic lib
 if ( MSVC )
 
 	
@@ -232,7 +239,7 @@ set( CPP_HELPER_SRC
 	${MemoryAllocations}
 	${DebugTools}
 	${RTTIEmulation}
-	#[[${StaticLibUsing}]]
+	${StaticLibUsing}
 	${Main}
 )
 
@@ -247,12 +254,18 @@ if ( MSVC )
 
 	list( APPEND CPP_HELPER_SRC ${DynamicLibUsing} )
 
+	target_link_libraries( cpp_helper dynamic_lib )
+
 endif()]]
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
 include_directories( ${CPP_HELPER_SRC_DIR} )
-#target_link_libraries( cpp_helper static_lib dynamic_lib )
+
+if(BUILD_STATIC_LIB)
+	target_link_libraries( cpp_helper static_lib )
+	add_compile_definitions( cpp_helper PRIVATE USE_STATIC_LIB )
+endif()
 
 
 find_library( PTHREAD_LIB pthread )
