@@ -30,34 +30,17 @@
 #include "ExternKeyWord.h"
 #include "Random.h"
 #include "StaticLibUsing.h"
+#include "DynamicStaticPlugInLibUsing.h"
+#include "DynamicDynamicPlugInLibUsing.h"
 
 //not finished
 //#include "MemoryAllocations.h"
 //#include "RTTIEmulation.h"
 
-/*
-
-
-
-
-
-
-
-*/
-
-//not finished
-
-
-#ifdef _WINDOWS
-
-//#include "DynamicLibUsing.h"
-
-#endif*/
-
 
 int main()
 {
-	StaticLibUsing::example();
+	DynamicDynamicPlugInLibUsing::example();
 
 	std::cin.get();
 

@@ -8,12 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set( CPP_HELPER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/.. )
 set( CPP_HELPER_SRC_DIR ${CPP_HELPER_DIR}/src )
 
-
-#set(BUILD_STATIC_LIB TRUE)
 option( BUILD_STATIC_LIB "Add static lib example to build" ON )
+option( BUILD_DYNAMIC_LIB "Add dynamic lib example to build" ON )
 
+#static lib sources
 if ( BUILD_STATIC_LIB )
-	#static lib
 
 	message( "Build with static lib example" )
 
@@ -28,28 +27,40 @@ if ( BUILD_STATIC_LIB )
 	target_include_directories( static_lib PRIVATE ${CPP_HELPER_SRC_DIR} )
 endif()
 
+#dynamic lib sources
+if ( BUILD_DYNAMIC_LIB )
 
-#[[dynamic lib
 if ( MSVC )
 
-	
-	set( DYNAMIC_LIB_SRC 
-		${CPP_HELPER_SRC_DIR}/DynamicLib.cpp
-		${CPP_HELPER_SRC_DIR}/DynamicLib.h
+	set( DYNAMIC_STATIC_PLUG_IN_LIB_SRC 
+		${CPP_HELPER_SRC_DIR}/DynamicStaticPlugInLib.cpp
+		${CPP_HELPER_SRC_DIR}/DynamicStaticPlugInLib.h
 	)
 
-	add_library( dynamic_lib SHARED ${DYNAMIC_LIB_SRC} )
+	add_library( dynamic_static_plug_in_lib SHARED ${DYNAMIC_STATIC_PLUG_IN_LIB_SRC} )
 
-	target_include_directories( dynamic_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
-	target_include_directories( dynamic_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
-	target_compile_definitions( dynamic_lib PRIVATE DYNAMIC_LIB_EXPORT )
+	target_include_directories( dynamic_static_plug_in_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+	target_include_directories( dynamic_static_plug_in_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
+	target_compile_definitions( dynamic_static_plug_in_lib PRIVATE DYNAMIC_LIB_EXPORT )
 
-endif()]]
+
+	set( DYNAMIC_DYNAMIC_PLUG_IN_LIB_SRC 
+		${CPP_HELPER_SRC_DIR}/DynamicDynamicPlugInLib.cpp
+		${CPP_HELPER_SRC_DIR}/DynamicDynamicPlugInLib.h
+	)
+
+	add_library( dynamic_dynamic_plug_in_lib SHARED ${DYNAMIC_DYNAMIC_PLUG_IN_LIB_SRC} )
+
+	target_include_directories( dynamic_dynamic_plug_in_lib PUBLIC ${CPP_HELPER_SRC_DIR} )
+	target_include_directories( dynamic_dynamic_plug_in_lib PRIVATE ${CPP_HELPER_SRC_DIR} )	
+
+endif()
+
+endif()
 
 
 
 #sources
-
 set( Main 
 	${CPP_HELPER_SRC_DIR}/main.cpp
 	${CPP_HELPER_SRC_DIR}/CommonInclude.h
@@ -182,6 +193,14 @@ set( StaticLibUsing
 	${CPP_HELPER_SRC_DIR}/StaticLibUsing.h
 )
 
+set( DynamicStaticPlugInLibUsing 
+	${CPP_HELPER_SRC_DIR}/DynamicStaticPlugInLibUsing.h
+)
+
+set( DynamicDynamicPlugInLibUsing 
+	${CPP_HELPER_SRC_DIR}/DynamicDynamicPlugInLibUsing.h
+)
+
 source_group( examples\\stl FILES ${Stl} )
 source_group( examples\\extern_key_word FILES ${ExternKeyWord} )
 source_group( examples\\atributes FILES ${Atributes} )
@@ -209,6 +228,8 @@ source_group( examples\\memory_allocatin FILES ${MemoryAllocations} )
 source_group( examples\\debug_tools FILES ${DebugTools} )
 source_group( examples\\rtti_emulation FILES ${RTTIEmulation} )
 source_group( examples\\static_lib_using FILES ${StaticLibUsing} )
+source_group( examples\\dynamic_static_plug_in_using FILES ${DynamicStaticPlugInLibUsing} )
+source_group( examples\\dynamic_dynamic_plug_in_using FILES ${DynamicDynamicPlugInLibUsing} )
 
 source_group( main FILES ${Main} )
  
@@ -240,23 +261,10 @@ set( CPP_HELPER_SRC
 	${DebugTools}
 	${RTTIEmulation}
 	${StaticLibUsing}
+	${DynamicStaticPlugInLibUsing}
+	${DynamicDynamicPlugInLibUsing}
 	${Main}
 )
-
-#[[
-if ( MSVC )
-
-	set( DynamicLibUsing 
-		${CPP_HELPER_SRC_DIR}/DynamicLibUsing.h
-	)
-
-	source_group( examples\\dynamic_lib_using FILES ${DynamicLibUsing} )
-
-	list( APPEND CPP_HELPER_SRC ${DynamicLibUsing} )
-
-	target_link_libraries( cpp_helper dynamic_lib )
-
-endif()]]
 
 
 add_executable( cpp_helper ${CPP_HELPER_SRC} )
@@ -267,9 +275,14 @@ if(BUILD_STATIC_LIB)
 	add_compile_definitions( cpp_helper PRIVATE USE_STATIC_LIB )
 endif()
 
+if(BUILD_DYNAMIC_LIB)
+	target_link_libraries( cpp_helper dynamic_static_plug_in_lib )
+	add_compile_definitions( cpp_helper PRIVATE USE_DYNAMIC_LIB )
+endif()
 
+
+# POSIX multithread
 find_library( PTHREAD_LIB pthread )
-
 if ( PTHREAD_LIB )
 	target_link_libraries( pthread )
 endif()

@@ -1,7 +1,7 @@
-#ifndef DynamicLib_H
-#define DynamicLib_H
+#ifndef DynamicStaticPlugInLib_H
+#define DynamicStaticPlugInLib_H
 
-#ifdef _WINDOWS
+#include <Windows.h>
 
 #ifdef DYNAMIC_LIB_EXPORT
 	#define DYNAMIC_LIB_API __declspec(dllexport)
@@ -9,12 +9,10 @@
 	#define DYNAMIC_LIB_API __declspec(dllimport)
 #endif
 
-#else
-	#define DYNAMIC_LIB_API
-#endif
 
 
-namespace DynamicLib
+
+namespace DynamicStaticPlugInLib
 {
 	void DYNAMIC_LIB_API function();
 
