@@ -201,6 +201,14 @@ set( DynamicDynamicPlugInLibUsing
 	${CPP_HELPER_SRC_DIR}/DynamicDynamicPlugInLibUsing.h
 )
 
+set( WorkWithSockets
+	${CPP_HELPER_SRC_DIR}/TCPServerSocket.h
+	${CPP_HELPER_SRC_DIR}/TCPServerSocket.cpp
+	${CPP_HELPER_SRC_DIR}/TCPClientSocket.h
+	${CPP_HELPER_SRC_DIR}/TCPClientSocket.cpp
+)
+
+
 source_group( examples\\stl FILES ${Stl} )
 source_group( examples\\extern_key_word FILES ${ExternKeyWord} )
 source_group( examples\\atributes FILES ${Atributes} )
@@ -230,6 +238,7 @@ source_group( examples\\rtti_emulation FILES ${RTTIEmulation} )
 source_group( examples\\static_lib_using FILES ${StaticLibUsing} )
 source_group( examples\\dynamic_static_plug_in_using FILES ${DynamicStaticPlugInLibUsing} )
 source_group( examples\\dynamic_dynamic_plug_in_using FILES ${DynamicDynamicPlugInLibUsing} )
+source_group( examples\\work_with_sockets FILES ${WorkWithSockets} )
 
 source_group( main FILES ${Main} )
  
@@ -263,6 +272,7 @@ set( CPP_HELPER_SRC
 	${StaticLibUsing}
 	${DynamicStaticPlugInLibUsing}
 	${DynamicDynamicPlugInLibUsing}
+	${WorkWithSockets}
 	${Main}
 )
 
@@ -278,6 +288,12 @@ endif()
 if(BUILD_DYNAMIC_LIB)
 	target_link_libraries( cpp_helper dynamic_static_plug_in_lib )
 	add_compile_definitions( cpp_helper PRIVATE USE_DYNAMIC_LIB )
+endif()
+
+
+#Windows dlls
+if(MSVC)
+	target_link_libraries( cpp_helper wsock32 )
 endif()
 
 

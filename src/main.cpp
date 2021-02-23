@@ -29,9 +29,14 @@
 #include "DebugTools.h"
 #include "ExternKeyWord.h"
 #include "Random.h"
+
 #include "StaticLibUsing.h"
+
 #include "DynamicStaticPlugInLibUsing.h"
 #include "DynamicDynamicPlugInLibUsing.h"
+
+#include "TCPServerSocket.h"
+#include "TCPClientSocket.h"
 
 //not finished
 //#include "MemoryAllocations.h"
@@ -40,7 +45,15 @@
 
 int main()
 {
-	DynamicDynamicPlugInLibUsing::example();
+	auto clientRoutine = [](){
+		Sleep(100);
+		TCPClientSocket::example();
+	};
+
+	std::thread clientThread( clientRoutine );
+	clientThread.detach();
+
+	TCPServerSocket::example();
 
 	std::cin.get();
 
