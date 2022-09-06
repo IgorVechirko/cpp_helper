@@ -70,6 +70,7 @@ set( Stl
 	${CPP_HELPER_SRC_DIR}/Containers.h
 	${CPP_HELPER_SRC_DIR}/Iterators.h
 	${CPP_HELPER_SRC_DIR}/Algorithms.h
+	${CPP_HELPER_SRC_DIR}/Variant.h
 )
 
 set( ExternKeyWord 
