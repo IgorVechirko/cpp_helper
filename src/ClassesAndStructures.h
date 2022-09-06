@@ -58,6 +58,7 @@ namespace ClassesAndStructures
 		
 	};
 
+	//virtual inheritence fix method confilcing in compile
 	class ChildeClass1 : virtual public BaseClass
 	{
 	public:
@@ -66,7 +67,7 @@ namespace ClassesAndStructures
 
 		virtual ~ChildeClass1();
 	};
-
+	//virtual inheritence fix method confilcing in compile
 	class ChildeClass2 : virtual public BaseClass
 	{
 	public:
@@ -76,6 +77,7 @@ namespace ClassesAndStructures
 		virtual ~ChildeClass2();
 	};
 
+	
 	class MultipleInheritanceClass : public ChildeClass1 , public ChildeClass2
 	{
 	public:
