@@ -29,6 +29,7 @@
 #include "DebugTools.h"
 #include "ExternKeyWord.h"
 #include "Random.h"
+#include "MemoryOrder.h"
 
 #include "StaticLibUsing.h"
 
@@ -45,15 +46,8 @@
 
 int main()
 {
-	auto clientRoutine = [](){
-		Sleep(100);
-		TCPClientSocket::example();
-	};
-
-	std::thread clientThread( clientRoutine );
-	clientThread.detach();
-
-	TCPServerSocket::example();
+	MemoryOrder::OrderRelaxed sample;
+	sample.sample();
 
 	std::cin.get();
 

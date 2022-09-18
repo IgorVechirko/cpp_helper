@@ -147,6 +147,8 @@ set( ParallelProgramming
 	${CPP_HELPER_SRC_DIR}/RecursiveLockResolve.h
 	${CPP_HELPER_SRC_DIR}/ConditionVariables.h
 	${CPP_HELPER_SRC_DIR}/ConditionVariables.cpp
+	${CPP_HELPER_SRC_DIR}/MemoryOrder.h
+	${CPP_HELPER_SRC_DIR}/MemoryOrder.cpp
 )
 
 set( NumericLimits
