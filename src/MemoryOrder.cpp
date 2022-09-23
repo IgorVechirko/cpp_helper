@@ -117,4 +117,50 @@ void OrderRelaxed::sample()
 	std::cout << "Test finish" << std::endl;
 }
 
+
+
+
+//AcquirReleaseOrder
+void AcquirReleaseOrder::writeFirsThenSecond(TestCtx& _ctx)
+{
+	_ctx.m_first.store(true, std::memory_order_relaxed);
+	_ctx.m_second.store(true, std::memory_order_relaxed);
+}
+void AcquirReleaseOrder::readSecondThenFirst(TestCtx& _ctx)
+{
+	while(!_ctx.m_second.load(std::memory_order_acquire));
+
+	if(_ctx.m_first.load(std::memory_order_relaxed))
+		++_ctx.m_allSetCount;
+}
+void AcquirReleaseOrder::runTest()
+{
+	TestCtx ctx;
+
+	auto thread1 = std::make_unique<std::thread>(writeFirsThenSecond, std::ref(ctx));
+	auto thread2 = std::make_unique<std::thread>(readSecondThenFirst, std::ref(ctx));
+
+	thread1->join();
+	thread2->join();
+
+	if(!ctx.m_allSetCount)
+	{
+		std::cout << "It's could happend" << std::endl;
+	}
+}
+void AcquirReleaseOrder::sample()
+{
+	//std::vector<std::thread> samples;
+	for(int i = 0; i< 100000; ++i)
+	{
+		std::thread thread(runTest);
+		thread.join();
+	}
+
+	//for(auto& thread : samples)
+	//	thread.join();
+
+	std::cout << "Test finish" << std::endl;
+}
+
 }

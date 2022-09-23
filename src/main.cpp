@@ -46,7 +46,7 @@
 
 int main()
 {
-	MemoryOrder::OrderRelaxed sample;
+	MemoryOrder::AcquirReleaseOrder sample;
 	sample.sample();
 
 	std::cin.get();

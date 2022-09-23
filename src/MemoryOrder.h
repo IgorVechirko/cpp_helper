@@ -54,6 +54,20 @@ private:
 	
 };
 
+class AcquirReleaseOrder
+{
+public:
+
+	void sample();
+
+private:
+
+	static void writeFirsThenSecond(TestCtx& _ctx);
+	static void readSecondThenFirst(TestCtx& _ctx);
+
+	static void runTest();
+};
+
 }
 
 #endif
