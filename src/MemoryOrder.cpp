@@ -124,7 +124,7 @@ void OrderRelaxed::sample()
 void AcquirReleaseOrder::writeFirsThenSecond(TestCtx& _ctx)
 {
 	_ctx.m_first.store(true, std::memory_order_relaxed);
-	_ctx.m_second.store(true, std::memory_order_relaxed);
+	_ctx.m_second.store(true, std::memory_order_release);
 }
 void AcquirReleaseOrder::readSecondThenFirst(TestCtx& _ctx)
 {
@@ -145,13 +145,13 @@ void AcquirReleaseOrder::runTest()
 
 	if(!ctx.m_allSetCount)
 	{
-		std::cout << "It's could happend" << std::endl;
+		std::cout << "It's never happend" << std::endl;
 	}
 }
 void AcquirReleaseOrder::sample()
 {
 	//std::vector<std::thread> samples;
-	for(int i = 0; i< 100000; ++i)
+	for(int i = 0; i< 100; ++i)
 	{
 		std::thread thread(runTest);
 		thread.join();
