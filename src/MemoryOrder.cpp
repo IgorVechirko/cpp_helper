@@ -163,4 +163,55 @@ void AcquirReleaseOrder::sample()
 	std::cout << "Test finish" << std::endl;
 }
 
+
+
+//ConsumeReleaseOrder
+void ConsumeReleaseOrder::writeOperation(TestCtx& _ctx, std::atomic<bool>& _relaxedFlag)
+{
+	_relaxedFlag.store(true, std::memory_order_relaxed);
+
+	_ctx.m_second.store(true, std::memory_order_relaxed);
+	_ctx.m_first.store(true, std::memory_order_release);
+}
+void ConsumeReleaseOrder::readOperation(TestCtx& _ctx, std::atomic<bool>& _relaxedFlag)
+{
+	while(!_ctx.m_first.load(std::memory_order_consume));
+
+	if(_ctx.m_second.load(std::memory_order_relaxed) &&
+		_relaxedFlag.load(std::memory_order_relaxed))
+	{
+		++_ctx.m_allSetCount;
+	}
+}
+void ConsumeReleaseOrder::runTest()
+{
+	std::atomic<bool> relaxedFlag{false};
+	TestCtx ctx;
+
+	auto thread1 = std::make_unique<std::thread>(writeOperation, std::ref(ctx), std::ref(relaxedFlag));
+	auto thread2 = std::make_unique<std::thread>(readOperation, std::ref(ctx), std::ref(relaxedFlag));
+
+	thread1->join();
+	thread2->join();
+
+	if(!ctx.m_allSetCount)
+	{
+		std::cout << "It's could happend" << std::endl;
+	}
+}
+void ConsumeReleaseOrder::sample()
+{
+	//std::vector<std::thread> samples;
+	for(int i = 0; i< 10000; ++i)
+	{
+		std::thread thread(runTest);
+		thread.join();
+	}
+
+	//for(auto& thread : samples)
+	//	thread.join();
+
+	std::cout << "Test finish" << std::endl;
+}
+
 }

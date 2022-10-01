@@ -1,15 +1,16 @@
 #ifndef MemoryOrder_H
 #define MemoryOrder_H
 
+#include <string>
 #include <atomic>
 
 namespace MemoryOrder
 {
 
-	struct TestCtx
+struct TestCtx
 {
-	std::atomic<bool> m_first;
-	std::atomic<bool> m_second;
+	std::atomic<bool> m_first{false};
+	std::atomic<bool> m_second{false};
 
 	std::atomic<uint32_t> m_allSetCount{0};
 };
@@ -64,6 +65,21 @@ private:
 
 	static void writeFirsThenSecond(TestCtx& _ctx);
 	static void readSecondThenFirst(TestCtx& _ctx);
+
+	static void runTest();
+};
+
+class ConsumeReleaseOrder
+{
+
+public:
+
+	void sample();
+
+private:
+
+	static void writeOperation(TestCtx& _ctx, std::atomic<bool>& _relaxedFlag);
+	static void readOperation(TestCtx& _ctx, std::atomic<bool>& _relaxedFlag);
 
 	static void runTest();
 };
