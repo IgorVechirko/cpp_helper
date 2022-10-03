@@ -214,4 +214,51 @@ void ConsumeReleaseOrder::sample()
 	std::cout << "Test finish" << std::endl;
 }
 
+
+
+
+//FenceBarrier
+void FenceOrder::writeFirsThenSecond(TestCtx& _ctx)
+{
+	_ctx.m_first.store(true, std::memory_order_relaxed);
+	std::atomic_thread_fence(std::memory_order_release);
+	_ctx.m_second.store(true, std::memory_order_relaxed);
+}
+void FenceOrder::readSecondThenFirst(TestCtx& _ctx)
+{
+	while(!_ctx.m_second.load(std::memory_order_relaxed));
+	std::atomic_thread_fence(std::memory_order_acquire);
+	if(_ctx.m_first.load(std::memory_order_relaxed))
+		++_ctx.m_allSetCount;
+}
+void FenceOrder::runTest()
+{
+	TestCtx ctx;
+
+	auto thread1 = std::make_unique<std::thread>(writeFirsThenSecond, std::ref(ctx));
+	auto thread2 = std::make_unique<std::thread>(readSecondThenFirst, std::ref(ctx));
+
+	thread1->join();
+	thread2->join();
+
+	if(!ctx.m_allSetCount)
+	{
+		std::cout << "It's never happend" << std::endl;
+	}
+}
+void FenceOrder::sample()
+{
+	//std::vector<std::thread> samples;
+	for(int i = 0; i< 100; ++i)
+	{
+		std::thread thread(runTest);
+		thread.join();
+	}
+
+	//for(auto& thread : samples)
+	//	thread.join();
+
+	std::cout << "Test finish" << std::endl;
+}
+
 }

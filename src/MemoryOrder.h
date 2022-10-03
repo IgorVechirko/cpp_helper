@@ -84,6 +84,20 @@ private:
 	static void runTest();
 };
 
+class FenceOrder
+{
+	public:
+
+	void sample();
+
+private:
+
+	static void writeFirsThenSecond(TestCtx& _ctx);
+	static void readSecondThenFirst(TestCtx& _ctx);
+
+	static void runTest();
+};
+
 }
 
 #endif
