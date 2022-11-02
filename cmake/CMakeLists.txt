@@ -243,6 +243,12 @@ source_group( examples\\dynamic_static_plug_in_using FILES ${DynamicStaticPlugIn
 source_group( examples\\dynamic_dynamic_plug_in_using FILES ${DynamicDynamicPlugInLibUsing} )
 source_group( examples\\work_with_sockets FILES ${WorkWithSockets} )
 
+set( Observer
+	${CPP_HELPER_SRC_DIR}/Observer.h
+)
+
+source_group( templates FILES ${Observer})
+
 source_group( main FILES ${Main} )
  
 set( CPP_HELPER_SRC
@@ -276,6 +282,7 @@ set( CPP_HELPER_SRC
 	${DynamicStaticPlugInLibUsing}
 	${DynamicDynamicPlugInLibUsing}
 	${WorkWithSockets}
+	${Observer}
 	${Main}
 )
 
