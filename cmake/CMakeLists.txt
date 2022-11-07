@@ -247,7 +247,15 @@ set( Observer
 	${CPP_HELPER_SRC_DIR}/Observer.h
 )
 
-source_group( templates FILES ${Observer})
+set( ParallelQueue 
+	${CPP_HELPER_SRC_DIR}/ParallelQueue.h
+)
+
+
+source_group( templates FILES 
+								${Observer}
+								${ParallelQueue}
+)
 
 source_group( main FILES ${Main} )
  
@@ -283,6 +291,7 @@ set( CPP_HELPER_SRC
 	${DynamicDynamicPlugInLibUsing}
 	${WorkWithSockets}
 	${Observer}
+	${ParallelQueue}
 	${Main}
 )
 
