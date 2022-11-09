@@ -251,10 +251,14 @@ set( ParallelQueue
 	${CPP_HELPER_SRC_DIR}/ParallelQueue.h
 )
 
+set( PrallelLookupTable
+	${CPP_HELPER_SRC_DIR}/ParallelLookupTable.h
+)
 
-source_group( templates FILES 
+source_group( paterns FILES 
 								${Observer}
 								${ParallelQueue}
+								${PrallelLookupTable}
 )
 
 source_group( main FILES ${Main} )
@@ -292,6 +296,7 @@ set( CPP_HELPER_SRC
 	${WorkWithSockets}
 	${Observer}
 	${ParallelQueue}
+	${PrallelLookupTable}
 	${Main}
 )
 
