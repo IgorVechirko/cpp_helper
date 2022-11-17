@@ -255,10 +255,15 @@ set( PrallelLookupTable
 	${CPP_HELPER_SRC_DIR}/ParallelLookupTable.h
 )
 
+set( ParallelList
+	${CPP_HELPER_SRC_DIR}/ParallelList.h
+)
+
 source_group( paterns FILES 
 								${Observer}
 								${ParallelQueue}
 								${PrallelLookupTable}
+								${ParallelList}
 )
 
 source_group( main FILES ${Main} )
@@ -297,6 +302,7 @@ set( CPP_HELPER_SRC
 	${Observer}
 	${ParallelQueue}
 	${PrallelLookupTable}
+	${ParallelList}
 	${Main}
 )
 
