@@ -247,6 +247,11 @@ set( Observer
 	${CPP_HELPER_SRC_DIR}/Observer.h
 )
 
+set( Initializer
+	${CPP_HELPER_SRC_DIR}/Initializer.h
+	${CPP_HELPER_SRC_DIR}/Initializer.cpp
+)
+
 set( ParallelQueue 
 	${CPP_HELPER_SRC_DIR}/ParallelQueue.h
 )
@@ -261,6 +266,7 @@ set( ParallelList
 
 source_group( paterns FILES 
 								${Observer}
+								${Initializer}
 								${ParallelQueue}
 								${PrallelLookupTable}
 								${ParallelList}
@@ -300,6 +306,7 @@ set( CPP_HELPER_SRC
 	${DynamicDynamicPlugInLibUsing}
 	${WorkWithSockets}
 	${Observer}
+	${Initializer}
 	${ParallelQueue}
 	${PrallelLookupTable}
 	${ParallelList}
