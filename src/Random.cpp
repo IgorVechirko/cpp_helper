@@ -8,11 +8,12 @@ namespace Random
 	void example()
 	{
 		{
-			std::default_random_engine dre;
+			std::random_device d;
+			std::default_random_engine dre(d());
 
-			std::uniform_int_distribution<int> di{10,20};
+			std::uniform_int_distribution<int> each_run_diff_seq_di{10,20};
 			for( int i = 0; i < 20; i++ )
-				std::cout << i << ". \t" << di(dre) << std::endl;
+				std::cout << i << ". \t" << each_run_diff_seq_di(dre) << std::endl;
 
 			std::cout << std::endl;
 
